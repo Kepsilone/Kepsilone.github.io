@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kepsilone — Projects</title>
   <meta name="description" content="Projets data engineering et ML de Sabeur Jedid.">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="wrap">
 
   <header class="topbar">
-    <img src="assets/img/logo.png" alt="Kepsilone" class="logo-img">
+    <img src="assets/img/logo.png" alt="Kepsilone" class="logo">
     <nav class="toplinks">
-      <a href="https://github.com/KepsiloneAnalytics">GitHub</a>
-      <a href="https://kepsilone.com">kepsilone.com</a>
-      <a href="https://linkedin.com/in/sabeur-jedid">LinkedIn</a>
+      <a href="https://github.com/KepsiloneAnalytics" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
+      <a href="https://linkedin.com/in/sabeur-jedid" target="_blank" rel="noopener">LinkedIn</a>
     </nav>
   </header>
 
@@ -24,11 +24,11 @@
     <img src="assets/img/photo.png" alt="Sabeur Jedid" class="hero-photo">
     <div class="hero-content">
       <div class="eyebrow">Projects · KepsiloneAnalytics</div>
-      <h1>Sabeur Jedid — Data Engineering & ML</h1>
+      <h1>Sabeur Jedid — Data Engineering &amp; ML</h1>
       <p>Projets autour de l'ingestion, du traitement et de l'exploitation de données. Chaque repo documente les choix techniques, les limites et les résultats.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#data-engineering">Voir les projets</a>
-        <a class="btn btn-ghost" href="https://kepsilone.com">kepsilone.com →</a>
+        <a class="btn btn-ghost" href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com →</a>
       </div>
     </div>
   </section>
@@ -41,7 +41,6 @@
     <span class="filter" data-cat="automatisation">Automatisation</span>
   </div>
 
-  <!-- DATA ENGINEERING -->
   <section class="cat-section" id="data-engineering" data-cat="data-engineering">
     <div class="cat-header">
       <span class="cat-dot" style="background:#2563eb;"></span>
@@ -67,15 +66,14 @@
         <div class="project-footer">
           <div class="status"><span class="dot dot-done"></span>Terminé · Fév–Mar 2026</div>
           <div class="project-links">
-            <a class="btn btn-primary" href="https://github.com/KepsiloneAnalytics/pipeline-streaming-crypto">Code</a>
-            <a class="btn btn-ghost" href="https://kepsilone.com/projets/pipeline-streaming-crypto/">Détail →</a>
+            <a class="btn btn-primary" href="https://github.com/KepsiloneAnalytics/pipeline-streaming-crypto" target="_blank" rel="noopener">Code</a>
+            <a class="btn btn-ghost" href="https://kepsilone.com/projets/pipeline-streaming-crypto/" target="_blank" rel="noopener">Détail →</a>
           </div>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- BUSINESS INTELLIGENCE -->
   <section class="cat-section" id="business-intelligence" data-cat="business-intelligence">
     <div class="cat-header">
       <span class="cat-dot" style="background:#059669;"></span>
@@ -88,7 +86,6 @@
     </div>
   </section>
 
-  <!-- MACHINE LEARNING -->
   <section class="cat-section" id="machine-learning" data-cat="machine-learning">
     <div class="cat-header">
       <span class="cat-dot" style="background:#7c3aed;"></span>
@@ -101,7 +98,6 @@
     </div>
   </section>
 
-  <!-- AUTOMATISATION -->
   <section class="cat-section" id="automatisation" data-cat="automatisation">
     <div class="cat-header">
       <span class="cat-dot" style="background:#d97706;"></span>
@@ -117,17 +113,24 @@
   <footer>
     <div>© 2026 Kepsilone · Sabeur Jedid</div>
     <div>
-      <a href="/cdn-cgi/l/email-protection#82e1edecf6e3e1f6c2e9e7f2f1ebeeedece7ace1edef">Email</a> ·
-      <a href="https://github.com/KepsiloneAnalytics">GitHub</a> ·
-      <a href="https://kepsilone.com">kepsilone.com</a>
+      <a href="mailto:contact@kepsilone.com">Email</a> ·
+      <a href="https://github.com/KepsiloneAnalytics" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
     </div>
   </footer>
 
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-document.querySelectorAll('.filter').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+<script>
+document.querySelectorAll('.filter').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
-    const cat = btn.dataset.cat;
-    document.querySelectorAll('.c
+    var cat = btn.getAttribute('data-cat');
+    document.querySelectorAll('.cat-section').forEach(function(section) {
+      section.style.display = (cat === 'all' || section.getAttribute('data-cat') === cat) ? 'block' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
