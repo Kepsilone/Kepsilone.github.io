@@ -1,160 +1,133 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kepsilone — Sabeur Jedid | Projets Data, Automatisation, IA appliquée</title>
-    <meta name="description" content="Portfolio par projets : data engineering, automatisation Python et IA appliquée. Chaque projet documente les choix, limites et résultats.">
-    <meta name="keywords" content="Sabeur Jedid, data engineering, machine learning, python, portfolio, fabrication additive">
-    <meta name="author" content="Sabeur Jedid">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Kepsilone — Sabeur Jedid">
-    <meta property="og:description" content="Portfolio par projets : data engineering, automatisation Python et IA appliquée">
-    
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kepsilone — Projects</title>
+  <meta name="description" content="Projets data engineering et ML de Sabeur Jedid.">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="layout">
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <img src="assets/img/io.png" alt="Photo de profil Kepsilone" class="profile-photo">
-                
-                <nav class="sidebar-nav">
-                    <h3>🔗 Navigation</h3>
-                    <ul>
-                        <li><a href="#intro">À propos</a></li>
-                        <li><a href="#projets">Projets</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#stack">Stack</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
+<div class="wrap">
 
-                <div class="sidebar-stats">
-                    <h3>📊 Stats</h3>
-                    <div class="stat-item">
-                        <span class="stat-number">1</span>
-                        <span class="stat-label">Projets publiés</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">1</span>
-                        <span class="stat-label">Articles</span>
-                    </div>
-                </div>
-            </aside>
+  <header class="topbar">
+    <img src="assets/img/logo.png" alt="Kepsilone" class="logo-img">
+    <nav class="toplinks">
+      <a href="https://github.com/KepsiloneAnalytics">GitHub</a>
+      <a href="https://kepsilone.com">kepsilone.com</a>
+      <a href="https://linkedin.com/in/sabeur-jedid">LinkedIn</a>
+    </nav>
+  </header>
 
-            <!-- Contenu principal -->
-            <main class="main-content">
-                <!-- Hero -->
-                <header class="page-header" id="intro">
-                    <h1>Ingénieur en fabrication additive. Je construis un portfolio data engineering et ML.</h1>
-                    <p>Chaque projet documente les choix techniques, les limites et les résultats.</p>
-                    <div class="hero-buttons">
-                        <a href="#projets" class="btn-primary">Voir les projets</a>
-                        <a href="#blog" class="btn-secondary">Lire le blog</a>
-                    </div>
-                </header>
-
-                <!-- Projets -->
-                <section id="projets" class="projects-section">
-                    <h2>🚀 Projets</h2>
-                    
-                    <div class="projects-grid">
-                        <article class="project-card">
-                            <div class="project-header">
-                                <span class="project-icon">🏭</span>
-                                <h3>Parsing et analyse de logs industriels</h3>
-                            </div>
-                            <p class="project-description">
-                                Extraction de signaux (O₂, température, vitesse laser...), nettoyage, structuration, contrôles qualité, visualisation. Pipeline de traitement de logs bruts LPBF vers dataset exploitable.
-                            </p>
-                            <div class="project-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Pandas</span>
-                                <span class="tag">Data validation</span>
-                                <span class="tag">Plotly</span>
-                            </div>
-                            <div class="project-metrics">
-                                <span class="metric">📌 Statut : en cours</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="projects/logs-industrie.html" class="btn-primary">Voir le projet</a>
-                                <a href="https://github.com/Kepsilone/logs-lpbf-parser" target="_blank" class="btn-secondary">GitHub</a>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="projects-cta">
-                        <p>🔗 Tous mes projets sont disponibles sur <a href="https://github.com/Kepsilone" target="_blank">GitHub</a></p>
-                    </div>
-                </section>
-
-                <!-- Blog -->
-                <section id="blog" class="blog-section">
-                    <h2>🧾 Blog technique</h2>
-                    <p class="section-intro">Notes techniques, retours d'expérience, choix d'architecture.</p>
-
-                    <article class="blog-card">
-                        <h3>De logs bruts à un dataset exploitable : pipeline de parsing + validation</h3>
-                        <p>Parsing de fichiers multi-formats, typage automatique, contrôle qualité, gestion des anomalies. Exemples concrets et pièges rencontrés.</p>
-                        <div class="blog-meta">
-                            <span>📅 Février 2025</span>
-                            <span>⏱️ 8 min</span>
-                        </div>
-                        <a href="blog/logs-to-dataset.html" class="btn-primary">Lire l'article</a>
-                    </article>
-                </section>
-
-                <!-- Stack -->
-                <section id="stack" class="expertise-section">
-                    <h2>🧠 Stack Technique</h2>
-                    <div class="expertise-grid">
-                        <div class="expertise-card">
-                            <h4>Data Engineering</h4>
-                            <ul>
-                                <li>Python (Pandas, NumPy)</li>
-                                <li>SQL, SQLite</li>
-                                <li>ETL / Data pipelines</li>
-                                <li>Data validation</li>
-                            </ul>
-                        </div>
-                        <div class="expertise-card">
-                            <h4>ML & Analyse</h4>
-                            <ul>
-                                <li>Scikit-learn</li>
-                                <li>Analyse exploratoire</li>
-                                <li>Modèles supervisés</li>
-                                <li>Statistiques</li>
-                            </ul>
-                        </div>
-                        <div class="expertise-card">
-                            <h4>Dev & Outils</h4>
-                            <ul>
-                                <li>Git, GitHub</li>
-                                <li>Streamlit, Plotly</li>
-                                <li>FastAPI (en cours)</li>
-                                <li>Docker (en cours)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Contact -->
-                <section id="contact" class="contact-section">
-                    <h2>🤝 Contact</h2>
-                    <p>📧 Email : <strong>contact@kepsilone.com</strong></p>
-                    <p>💼 LinkedIn : <a href="https://linkedin.com/in/sabeur-jedid" target="_blank">Sabeur Jedid</a></p>
-                    <p>💻 GitHub : <a href="https://github.com/Kepsilone" target="_blank">@Kepsilone</a></p>
-                </section>
-
-                <footer class="footer">
-                    <p><em>© 2025 Kepsilone — Portfolio en construction</em></p>
-                </footer>
-            </main>
-        </div>
+  <section class="hero">
+    <img src="assets/img/photo.jpg" alt="Sabeur Jedid" class="hero-photo">
+    <div class="hero-content">
+      <div class="eyebrow">Projects · KepsiloneAnalytics</div>
+      <h1>Sabeur Jedid — Data Engineering & ML</h1>
+      <p>Projets autour de l'ingestion, du traitement et de l'exploitation de données. Chaque repo documente les choix techniques, les limites et les résultats.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#data-engineering">Voir les projets</a>
+        <a class="btn btn-ghost" href="https://kepsilone.com">kepsilone.com →</a>
+      </div>
     </div>
-</body>
-</html>
+  </section>
+
+  <div class="filters">
+    <span class="filter active" data-cat="all">Tous</span>
+    <span class="filter" data-cat="data-engineering">Data Engineering</span>
+    <span class="filter" data-cat="business-intelligence">Business Intelligence</span>
+    <span class="filter" data-cat="machine-learning">Machine Learning</span>
+    <span class="filter" data-cat="automatisation">Automatisation</span>
+  </div>
+
+  <!-- DATA ENGINEERING -->
+  <section class="cat-section" id="data-engineering" data-cat="data-engineering">
+    <div class="cat-header">
+      <span class="cat-dot" style="background:#2563eb;"></span>
+      <span class="cat-title">Data Engineering</span>
+      <span class="cat-count">1</span>
+      <span class="cat-line"></span>
+    </div>
+    <div class="projects">
+      <article class="project">
+        <div class="project-body">
+          <h3>Pipeline streaming crypto — données temps réel</h3>
+          <p class="project-desc">Ingestion en continu via WebSocket Binance, transit Kafka, stockage TimescaleDB, exposition FastAPI. Stack Dockerisée. ~2 000 events/min, latence &lt; 800ms, 4 paires en parallèle.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Kafka</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">TimescaleDB</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Avro</span>
+            <span class="tag">Pydantic</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <div class="status"><span class="dot dot-done"></span>Terminé · Fév–Mar 2026</div>
+          <div class="project-links">
+            <a class="btn btn-primary" href="https://github.com/KepsiloneAnalytics/pipeline-streaming-crypto">Code</a>
+            <a class="btn btn-ghost" href="https://kepsilone.com/projets/pipeline-streaming-crypto/">Détail →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- BUSINESS INTELLIGENCE -->
+  <section class="cat-section" id="business-intelligence" data-cat="business-intelligence">
+    <div class="cat-header">
+      <span class="cat-dot" style="background:#059669;"></span>
+      <span class="cat-title">Business Intelligence</span>
+      <span class="cat-count">À venir</span>
+      <span class="cat-line"></span>
+    </div>
+    <div class="projects">
+      <div class="empty">Projets en cours de développement — dashboards, reporting, KPIs métier.</div>
+    </div>
+  </section>
+
+  <!-- MACHINE LEARNING -->
+  <section class="cat-section" id="machine-learning" data-cat="machine-learning">
+    <div class="cat-header">
+      <span class="cat-dot" style="background:#7c3aed;"></span>
+      <span class="cat-title">Machine Learning</span>
+      <span class="cat-count">À venir</span>
+      <span class="cat-line"></span>
+    </div>
+    <div class="projects">
+      <div class="empty">Projets en cours — détection d'anomalies, modèles supervisés, séries temporelles.</div>
+    </div>
+  </section>
+
+  <!-- AUTOMATISATION -->
+  <section class="cat-section" id="automatisation" data-cat="automatisation">
+    <div class="cat-header">
+      <span class="cat-dot" style="background:#d97706;"></span>
+      <span class="cat-title">Automatisation</span>
+      <span class="cat-count">À venir</span>
+      <span class="cat-line"></span>
+    </div>
+    <div class="projects">
+      <div class="empty">Projets en cours — ETL, scripts batch, automatisation Python.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 Kepsilone · Sabeur Jedid</div>
+    <div>
+      <a href="/cdn-cgi/l/email-protection#82e1edecf6e3e1f6c2e9e7f2f1ebeeedece7ace1edef">Email</a> ·
+      <a href="https://github.com/KepsiloneAnalytics">GitHub</a> ·
+      <a href="https://kepsilone.com">kepsilone.com</a>
+    </div>
+  </footer>
+
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.querySelectorAll('.filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    document.querySelectorAll('.c
