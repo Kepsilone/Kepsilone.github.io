@@ -43,9 +43,11 @@ body {
 }
 
 .logo {
-  height: 56px;
+  height: 40px;
   width: auto;
+  max-width: 160px;
   display: block;
+  object-fit: contain;
 }
 
 .toplinks {
