@@ -4,125 +4,228 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kepsilone — Projects</title>
-  <meta name="description" content="Projets data engineering et ML de Sabeur Jedid.">
+  <meta name="description" content="Projets data engineering et machine learning de Sabeur Jedid.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-  <header class="topbar">
-    <nav class="toplinks">
-      <a href="https://github.com/KepsiloneAnalytics" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
-      <a href="https://linkedin.com/in/sabeur-jedid" target="_blank" rel="noopener">LinkedIn</a>
-    </nav>
-  </header>
+    <header class="topbar">
+      <a href="https://kepsilone.com" class="brand" target="_blank" rel="noopener" aria-label="Kepsilone">
+        <img src="assets/img/logo.png" alt="Kepsilone" class="logo">
+      </a>
 
-  <section class="hero">
-    <img src="assets/img/photo.png" alt="Sabeur Jedid" class="hero-photo">
-    <div class="hero-content">
-      <div class="eyebrow">Projects · KepsiloneAnalytics</div>
-      <h1>Sabeur Jedid — Data Engineering &amp; ML</h1>
-      <p>Projets autour de l'ingestion, du traitement et de l'exploitation de données. Chaque repo documente les choix techniques, les limites et les résultats.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#data-engineering">Voir les projets</a>
-        <a class="btn btn-ghost" href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com →</a>
+      <nav class="toplinks" aria-label="Liens principaux">
+        <a href="https://github.com/KepsiloneAnalytics" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
+        <a href="https://linkedin.com/in/sabeur-jedid" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="hero">
+        <div class="hero-media">
+          <img src="assets/img/photo.png" alt="Portrait de Sabeur Jedid" class="hero-photo">
+        </div>
+
+        <div class="hero-content">
+          <p class="eyebrow">Projects · KepsiloneAnalytics</p>
+
+          <h1>Sabeur Jedid — Data Engineering &amp; ML</h1>
+
+          <p class="hero-text">
+            Projets orientés ingestion, transformation, stockage et exposition de données.
+            Chaque repo documente l’architecture, les choix techniques, les limites et les résultats.
+          </p>
+
+          <div class="hero-meta">
+            <span class="hero-badge">Python</span>
+            <span class="hero-badge">SQL</span>
+            <span class="hero-badge">Docker</span>
+            <span class="hero-badge">APIs</span>
+            <span class="hero-badge">Pipelines</span>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects-index">Voir les projets</a>
+            <a class="btn btn-ghost" href="https://kepsilone.com" target="_blank" rel="noopener">Retour au site</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-intro" id="projects-index">
+        <p class="section-kicker">Index</p>
+        <h2>Projets classés par domaine</h2>
+        <p class="section-text">
+          Une structure simple pour séparer les pipelines data, les dashboards, le machine learning
+          et l’automatisation. Les sections à venir servent aussi à montrer la trajectoire du portfolio.
+        </p>
+      </section>
+
+      <div class="filters" role="tablist" aria-label="Filtres projets">
+        <button class="filter active" type="button" data-cat="all" aria-selected="true">Tous</button>
+        <button class="filter" type="button" data-cat="data-engineering" aria-selected="false">Data Engineering</button>
+        <button class="filter" type="button" data-cat="business-intelligence" aria-selected="false">Business Intelligence</button>
+        <button class="filter" type="button" data-cat="machine-learning" aria-selected="false">Machine Learning</button>
+        <button class="filter" type="button" data-cat="automatisation" aria-selected="false">Automatisation</button>
       </div>
-    </div>
-  </section>
 
-  <div class="filters">
-    <span class="filter active" data-cat="all">Tous</span>
-    <span class="filter" data-cat="data-engineering">Data Engineering</span>
-    <span class="filter" data-cat="business-intelligence">Business Intelligence</span>
-    <span class="filter" data-cat="machine-learning">Machine Learning</span>
-    <span class="filter" data-cat="automatisation">Automatisation</span>
+      <section class="cat-section" id="data-engineering" data-cat="data-engineering">
+        <div class="cat-header">
+          <div class="cat-heading">
+            <span class="cat-dot" style="background:#2563eb;"></span>
+            <h2 class="cat-title">Data Engineering</h2>
+            <span class="cat-count">1 projet</span>
+          </div>
+          <span class="cat-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="projects">
+          <article class="project project-featured">
+            <div class="project-body">
+              <div class="project-topline">
+                <span class="project-label">Pipeline temps réel</span>
+              </div>
+
+              <h3>Pipeline streaming crypto — données temps réel</h3>
+
+              <p class="project-desc">
+                Ingestion en continu via WebSocket Binance, transit Kafka, stockage TimescaleDB
+                et exposition via FastAPI. Stack Dockerisée avec traitement parallèle.
+              </p>
+
+              <ul class="project-metrics">
+                <li>~2 000 events/min</li>
+                <li>latence &lt; 800 ms</li>
+                <li>4 paires traitées en parallèle</li>
+              </ul>
+
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Kafka</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">TimescaleDB</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Avro</span>
+                <span class="tag">Pydantic</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <div class="status">
+                <span class="dot dot-done" aria-hidden="true"></span>
+                <span>Terminé · Fév–Mar 2026</span>
+              </div>
+
+              <div class="project-links">
+                <a class="btn btn-primary" href="https://github.com/KepsiloneAnalytics/pipeline-streaming-crypto" target="_blank" rel="noopener">Code</a>
+                <a class="btn btn-ghost" href="https://kepsilone.com/projets/pipeline-streaming-crypto/" target="_blank" rel="noopener">Détail</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="cat-section" id="business-intelligence" data-cat="business-intelligence">
+        <div class="cat-header">
+          <div class="cat-heading">
+            <span class="cat-dot" style="background:#059669;"></span>
+            <h2 class="cat-title">Business Intelligence</h2>
+            <span class="cat-count">À venir</span>
+          </div>
+          <span class="cat-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="projects">
+          <div class="empty">
+            <strong>Section en préparation.</strong>
+            <p>Dashboards, reporting, indicateurs métier et restitution décisionnelle.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cat-section" id="machine-learning" data-cat="machine-learning">
+        <div class="cat-header">
+          <div class="cat-heading">
+            <span class="cat-dot" style="background:#7c3aed;"></span>
+            <h2 class="cat-title">Machine Learning</h2>
+            <span class="cat-count">À venir</span>
+          </div>
+          <span class="cat-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="projects">
+          <div class="empty">
+            <strong>Section en préparation.</strong>
+            <p>Détection d’anomalies, modèles supervisés, classification et séries temporelles.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cat-section" id="automatisation" data-cat="automatisation">
+        <div class="cat-header">
+          <div class="cat-heading">
+            <span class="cat-dot" style="background:#d97706;"></span>
+            <h2 class="cat-title">Automatisation</h2>
+            <span class="cat-count">À venir</span>
+          </div>
+          <span class="cat-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="projects">
+          <div class="empty">
+            <strong>Section en préparation.</strong>
+            <p>ETL, scripts batch, automatisation Python et workflows orientés productivité.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-left">
+        <p>© 2026 Kepsilone · Sabeur Jedid</p>
+      </div>
+
+      <div class="footer-right">
+        <a href="mailto:contact@kepsilone.com">Email</a>
+        <span>·</span>
+        <a href="https://github.com/KepsiloneAnalytics" target="_blank" rel="noopener">GitHub</a>
+        <span>·</span>
+        <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
+      </div>
+    </footer>
+
   </div>
 
-  <section class="cat-section" id="data-engineering" data-cat="data-engineering">
-    <div class="cat-header">
-      <span class="cat-dot" style="background:#2563eb;"></span>
-      <span class="cat-title">Data Engineering</span>
-      <span class="cat-count">1</span>
-      <span class="cat-line"></span>
-    </div>
-    <div class="projects">
-      <article class="project">
-        <div class="project-body">
-          <h3>Pipeline streaming crypto — données temps réel</h3>
-          <p class="project-desc">Ingestion en continu via WebSocket Binance, transit Kafka, stockage TimescaleDB, exposition FastAPI. Stack Dockerisée. ~2 000 events/min, latence &lt; 800ms, 4 paires en parallèle.</p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Kafka</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">TimescaleDB</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Avro</span>
-            <span class="tag">Pydantic</span>
-          </div>
-        </div>
-        <div class="project-footer">
-          <div class="status"><span class="dot dot-done"></span>Terminé · Fév–Mar 2026</div>
-          <div class="project-links">
-            <a class="btn btn-primary" href="https://github.com/KepsiloneAnalytics/pipeline-streaming-crypto" target="_blank" rel="noopener">Code</a>
-            <a class="btn btn-ghost" href="https://kepsilone.com/projets/pipeline-streaming-crypto/" target="_blank" rel="noopener">Détail →</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
+  <script>
+    (function () {
+      const filters = document.querySelectorAll('.filter');
+      const sections = document.querySelectorAll('.cat-section');
 
-  <section class="cat-section" id="business-intelligence" data-cat="business-intelligence">
-    <div class="cat-header">
-      <span class="cat-dot" style="background:#059669;"></span>
-      <span class="cat-title">Business Intelligence</span>
-      <span class="cat-count">À venir</span>
-      <span class="cat-line"></span>
-    </div>
-    <div class="projects">
-      <div class="empty">Projets en cours de développement — dashboards, reporting, KPIs métier.</div>
-    </div>
-  </section>
+      filters.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const cat = btn.getAttribute('data-cat');
 
-  <section class="cat-section" id="machine-learning" data-cat="machine-learning">
-    <div class="cat-header">
-      <span class="cat-dot" style="background:#7c3aed;"></span>
-      <span class="cat-title">Machine Learning</span>
-      <span class="cat-count">À venir</span>
-      <span class="cat-line"></span>
-    </div>
-    <div class="projects">
-      <div class="empty">Projets en cours — détection d'anomalies, modèles supervisés, séries temporelles.</div>
-    </div>
-  </section>
+          filters.forEach(function (item) {
+            item.classList.remove('active');
+            item.setAttribute('aria-selected', 'false');
+          });
 
-  <section class="cat-section" id="automatisation" data-cat="automatisation">
-    <div class="cat-header">
-      <span class="cat-dot" style="background:#d97706;"></span>
-      <span class="cat-title">Automatisation</span>
-      <span class="cat-count">À venir</span>
-      <span class="cat-line"></span>
-    </div>
-    <div class="projects">
-      <div class="empty">Projets en cours — ETL, scripts batch, automatisation Python.</div>
-    </div>
-  </section>
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
 
-  <footer>
-    <div>© 2026 Kepsilone · Sabeur Jedid</div>
-    <div>
-      <a href="/cdn-cgi/l/email-protection#ff9c90918b9e9c8bbf949a8f8c969390919ad19c9092">Email</a> ·
-      <a href="https://github.com/KepsiloneAnalytics" target="_blank" rel="noopener">GitHub</a> ·
-      <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
-    </div>
-  </footer>
-
-</div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-document.querySelectorAll('.filter').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.filter').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    var cat = btn.getAttribute('data-cat');
-    document.querySelectorAll('.cat-section').forEach(function(section) {
+          sections.forEach(function (section) {
+            const sectionCat = section.getAttribute('data-cat');
+            section.style.display = (cat === 'all' || sectionCat === cat) ? 'block' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
