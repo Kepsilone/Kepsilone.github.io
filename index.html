@@ -5,41 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kepsilone — Projects</title>
   <meta name="description" content="Projets data engineering et machine learning de Sabeur Jedid.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <div class="wrap">
 
-    <header class="topbar">
-      <a href="https://kepsilone.com" class="brand" target="_blank" rel="noopener" aria-label="Kepsilone">
-        <img src="assets/img/logo.png" alt="Kepsilone" class="logo">
-      </a>
+    <header class="site-header">
+      <div class="topbar">
+        <a href="https://kepsilone.com" class="brand" target="_blank" rel="noopener" aria-label="Kepsilone">
+          <img src="assets/img/logo.png" alt="Kepsilone" class="logo">
+        </a>
 
-      <nav class="toplinks" aria-label="Liens principaux">
-        <a href="https://github.com/KepsiloneAnalytics" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
-        <a href="https://linkedin.com/in/sabeur-jedid" target="_blank" rel="noopener">LinkedIn</a>
-      </nav>
+        <nav class="toplinks" aria-label="Liens principaux">
+          <a href="https://github.com/KepsiloneAnalytics" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
+          <a href="https://linkedin.com/in/sabeur-jedid" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+      </div>
+
+      <div class="page-header">
+        <div class="page-header-left">
+          <p class="page-kicker">Portfolio · KepsiloneAnalytics</p>
+          <h1 class="page-title">Projects</h1>
+          <p class="page-subtitle">
+            Sélection de projets autour de l’ingestion, du traitement, du stockage
+            et de l’exploitation de données.
+          </p>
+        </div>
+
+        <div class="page-header-right">
+          <span class="page-chip">Data Engineering</span>
+          <span class="page-chip">Machine Learning</span>
+          <span class="page-chip">Automation</span>
+        </div>
+      </div>
     </header>
 
     <main>
-
-      <section class="hero">
+      <section class="hero hero-compact">
         <div class="hero-media">
           <img src="assets/img/photo.png" alt="Portrait de Sabeur Jedid" class="hero-photo">
         </div>
 
         <div class="hero-content">
-          <p class="eyebrow">Projects · KepsiloneAnalytics</p>
-
-          <h1>Sabeur Jedid — Data Engineering &amp; ML</h1>
-
+          <p class="eyebrow">Sabeur Jedid</p>
+          <h2>Data Engineering &amp; ML orientés cas concrets</h2>
           <p class="hero-text">
-            Projets orientés ingestion, transformation, stockage et exposition de données.
-            Chaque repo documente l’architecture, les choix techniques, les limites et les résultats.
+            Repos conçus pour documenter l’architecture, les choix techniques,
+            les compromis et les résultats obtenus sur des cas concrets.
           </p>
 
           <div class="hero-meta">
@@ -61,8 +79,8 @@
         <p class="section-kicker">Index</p>
         <h2>Projets classés par domaine</h2>
         <p class="section-text">
-          Une structure simple pour séparer les pipelines data, les dashboards, le machine learning
-          et l’automatisation. Les sections à venir servent aussi à montrer la trajectoire du portfolio.
+          Une structure simple pour séparer les pipelines data, les dashboards,
+          le machine learning et l’automatisation.
         </p>
       </section>
 
@@ -101,7 +119,7 @@
               <ul class="project-metrics">
                 <li>~2 000 events/min</li>
                 <li>latence &lt; 800 ms</li>
-                <li>4 paires traitées en parallèle</li>
+                <li>4 paires en parallèle</li>
               </ul>
 
               <div class="tags">
@@ -183,7 +201,6 @@
           </div>
         </div>
       </section>
-
     </main>
 
     <footer class="site-footer">
