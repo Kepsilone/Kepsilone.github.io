@@ -237,11 +237,11 @@ a{
 }
 
 .hero-photo{
-  width:125px;
+  width:92px;
   height:92px;
   border-radius:50%;
   object-fit:cover;
-  object-position:center 38%;
+  object-position:center 20%;
   display:block;
   border:4px solid #fff;
   box-shadow:
