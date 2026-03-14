@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kepsilone — Portfolio Data Engineering</title>
   <meta name="description" content="Portfolio data engineering et machine learning de Sabeur Jedid.">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -20,11 +18,9 @@
         <a href="https://kepsilone.com" class="brand" target="_blank" rel="noopener" aria-label="Kepsilone">
           <img src="assets/img/logo.png" alt="Kepsilone" class="logo">
         </a>
-
         <div class="topbar-center">
           <h1 class="topbar-title">Portfolio Data Engineering</h1>
         </div>
-
         <nav class="toplinks" aria-label="Liens principaux">
           <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
           <a href="https://linkedin.com/in/sabeur-jedid" target="_blank" rel="noopener">LinkedIn</a>
@@ -34,11 +30,10 @@
       <div class="page-header">
         <div class="page-header-left">
           <p class="page-subtitle">
-            Sélection de projets autour de l’ingestion, du traitement, du stockage
-            et de l’exploitation de données.
+            Sélection de projets autour de l'ingestion, du traitement, du stockage
+            et de l'exploitation de données.
           </p>
         </div>
-
         <div class="page-header-right">
           <span class="page-chip">Data Engineering</span>
           <span class="page-chip">Machine Learning</span>
@@ -48,19 +43,17 @@
     </header>
 
     <main>
-      <section class="hero hero-compact">
+      <section class="hero">
         <div class="hero-media">
           <img src="assets/img/photo.png" alt="Portrait de Sabeur Jedid" class="hero-photo">
         </div>
-
         <div class="hero-content">
           <p class="eyebrow">Sabeur Jedid</p>
           <h2>Data Engineering &amp; ML orientés cas concrets</h2>
           <p class="hero-text">
-            Repos conçus pour documenter l’architecture, les choix techniques,
+            Repos conçus pour documenter l'architecture, les choix techniques,
             les compromis et les résultats obtenus sur des cas concrets.
           </p>
-
           <div class="hero-meta">
             <span class="hero-badge">Python</span>
             <span class="hero-badge">SQL</span>
@@ -68,7 +61,6 @@
             <span class="hero-badge">APIs</span>
             <span class="hero-badge">Pipelines</span>
           </div>
-
           <div class="actions">
             <a class="btn btn-primary" href="#projects-index">Voir les projets</a>
             <a class="btn btn-ghost" href="https://kepsilone.com" target="_blank" rel="noopener">Retour au site</a>
@@ -80,7 +72,7 @@
         <h2>Projets classés par domaine</h2>
         <p class="section-text">
           Une structure simple pour séparer les pipelines data, les dashboards,
-          le machine learning et l’automatisation.
+          le machine learning et l'automatisation.
         </p>
       </section>
 
@@ -92,6 +84,7 @@
         <button class="filter" type="button" data-cat="automatisation" aria-selected="false">Automatisation</button>
       </div>
 
+      <!-- DATA ENGINEERING -->
       <section class="cat-section" id="data-engineering" data-cat="data-engineering">
         <div class="cat-header">
           <div class="cat-heading">
@@ -101,27 +94,22 @@
           </div>
           <span class="cat-line" aria-hidden="true"></span>
         </div>
-
         <div class="projects">
-          <article class="project project-featured">
+          <article class="project">
             <div class="project-body">
               <div class="project-topline">
                 <span class="project-label">Pipeline temps réel</span>
               </div>
-
               <h3>Pipeline streaming crypto — données temps réel</h3>
-
               <p class="project-desc">
                 Ingestion en continu via WebSocket Binance, transit Kafka, stockage TimescaleDB
                 et exposition via FastAPI. Stack Dockerisée avec traitement parallèle.
               </p>
-
               <ul class="project-metrics">
                 <li>~2 000 events/min</li>
                 <li>latence &lt; 800 ms</li>
                 <li>4 paires en parallèle</li>
               </ul>
-
               <div class="tags">
                 <span class="tag">Python</span>
                 <span class="tag">Kafka</span>
@@ -132,13 +120,11 @@
                 <span class="tag">Pydantic</span>
               </div>
             </div>
-
             <div class="project-footer">
               <div class="status">
                 <span class="dot dot-done" aria-hidden="true"></span>
                 <span>Terminé · Fév–Mar 2026</span>
               </div>
-
               <div class="project-links">
                 <a class="btn btn-primary" href="https://github.com/KepsiloneAnalytics/pipeline-streaming-crypto" target="_blank" rel="noopener">Code</a>
                 <a class="btn btn-ghost" href="https://kepsilone.com/projets/pipeline-streaming-crypto/" target="_blank" rel="noopener">Détail</a>
@@ -148,6 +134,7 @@
         </div>
       </section>
 
+      <!-- BUSINESS INTELLIGENCE -->
       <section class="cat-section" id="business-intelligence" data-cat="business-intelligence">
         <div class="cat-header">
           <div class="cat-heading">
@@ -157,7 +144,6 @@
           </div>
           <span class="cat-line" aria-hidden="true"></span>
         </div>
-
         <div class="projects">
           <div class="empty">
             <strong>Section en préparation.</strong>
@@ -166,6 +152,7 @@
         </div>
       </section>
 
+      <!-- MACHINE LEARNING -->
       <section class="cat-section" id="machine-learning" data-cat="machine-learning">
         <div class="cat-header">
           <div class="cat-heading">
@@ -175,15 +162,15 @@
           </div>
           <span class="cat-line" aria-hidden="true"></span>
         </div>
-
         <div class="projects">
           <div class="empty">
             <strong>Section en préparation.</strong>
-            <p>Détection d’anomalies, modèles supervisés, classification et séries temporelles.</p>
+            <p>Détection d'anomalies, modèles supervisés, classification et séries temporelles.</p>
           </div>
         </div>
       </section>
 
+      <!-- AUTOMATISATION -->
       <section class="cat-section" id="automatisation" data-cat="automatisation">
         <div class="cat-header">
           <div class="cat-heading">
@@ -193,7 +180,6 @@
           </div>
           <span class="cat-line" aria-hidden="true"></span>
         </div>
-
         <div class="projects">
           <div class="empty">
             <strong>Section en préparation.</strong>
@@ -207,7 +193,6 @@
       <div class="footer-left">
         <p>© 2026 Kepsilone · Sabeur Jedid</p>
       </div>
-
       <div class="footer-right">
         <a href="mailto:contact@kepsilone.com">Email</a>
         <span>·</span>
@@ -221,23 +206,19 @@
 
   <script>
     (function () {
-      const filters = document.querySelectorAll('.filter');
-      const sections = document.querySelectorAll('.cat-section');
-
+      var filters = document.querySelectorAll('.filter');
+      var sections = document.querySelectorAll('.cat-section');
       filters.forEach(function (btn) {
         btn.addEventListener('click', function () {
-          const cat = btn.getAttribute('data-cat');
-
-          filters.forEach(function (item) {
-            item.classList.remove('active');
-            item.setAttribute('aria-selected', 'false');
+          var cat = btn.getAttribute('data-cat');
+          filters.forEach(function (b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
           });
-
           btn.classList.add('active');
           btn.setAttribute('aria-selected', 'true');
-
           sections.forEach(function (section) {
-            const sectionCat = section.getAttribute('data-cat');
+            var sectionCat = section.getAttribute('data-cat');
             section.style.display = (cat === 'all' || sectionCat === cat) ? 'block' : 'none';
           });
         });
