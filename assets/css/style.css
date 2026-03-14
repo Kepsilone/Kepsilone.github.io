@@ -62,7 +62,7 @@ a{color:inherit;}
 
 .logo{
   display:block;
-  height:50px;
+  height:40px;
   width:auto;
   max-width:none;
 }
@@ -78,8 +78,8 @@ a{color:inherit;}
 .topbar-title{
   margin:0;
   font-family:"Lora",serif;
-  font-size:28px;
-  font-weight:500;
+  font-size:24px;
+  font-weight:700;
   line-height:1.1;
   color:var(--primary);
 }
