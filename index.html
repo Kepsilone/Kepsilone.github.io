@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add("js")</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=3">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
 </head>
 <body>
   <a class="skip" href="#top">Aller au contenu</a>
@@ -181,26 +181,22 @@
            Reprendre le bloc <section class="cat-section"> ci-dessus. -->
       <section class="parcours" id="parcours">
         <h2 class="rv">Parcours</h2>
-        <ol class="timeline">
-          <li class="tl rv" style="--d:0ms">
-            <span class="tl-date">Orientation actuelle</span>
-            <h3>Data Engineering &amp; Intelligence artificielle</h3>
-            <p>Développement de projets autour des pipelines de données, de Python, SQL et des applications de l'intelligence artificielle.</p>
-          </li>
-          <li class="tl rv" style="--d:80ms">
-            <span class="tl-date">Formation</span>
-            <h3>Ingénierie et méthodes numériques</h3>
-            <ul class="tl-edu">
-              <li><strong>INSA Rouen</strong> — Master 2 Mécanique des matériaux <span class="tl-year">2015</span></li>
-              <li><strong>Université d'Évry</strong> — Master 2 Modélisation et méthodes numériques pour la mécanique <span class="tl-year">2018</span></li>
-            </ul>
-          </li>
-          <li class="tl rv" style="--d:160ms">
+        <div class="pc-grid">
+          <div class="pc rv" style="--d:0ms">
             <span class="tl-date">Expérience</span>
-            <h3>Expérience professionnelle</h3>
-            <p>Plusieurs années en ingénierie des procédés, avec des activités de modélisation, de simulation numérique et d'analyse de données techniques.</p>
-          </li>
-        </ol>
+            <ul class="pc-list">
+              <li><strong>Data Engineering &amp; IA</strong> — orientation actuelle : pipelines de données, Python, SQL et applications de l'IA.</li>
+              <li><strong>Ingénierie des procédés</strong> — plusieurs années en modélisation, simulation numérique et analyse de données techniques.</li>
+            </ul>
+          </div>
+          <div class="pc rv" style="--d:80ms">
+            <span class="tl-date">Formation</span>
+            <ul class="pc-list">
+              <li><strong>Université d'Évry</strong> — Master 2 Modélisation et méthodes numériques pour la mécanique <span class="tl-year">2018</span></li>
+              <li><strong>INSA Rouen</strong> — Master 2 Mécanique des matériaux <span class="tl-year">2015</span></li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section class="skills" id="competences">
