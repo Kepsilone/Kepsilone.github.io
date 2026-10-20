@@ -3,173 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kepsilone — Portfolio Data Engineering</title>
-  <meta name="description" content="Portfolio data engineering et machine learning de Sabeur Jedid.">
+  <title>Sabeur Jedid — Data Engineering</title>
+  <meta name="description" content="Portfolio de Sabeur Jedid : pipelines de données, de l'ingestion à la restitution. Python, SQL, projets sur données ouvertes.">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="canonical" href="https://kepsilone.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sabeur Jedid — Data Engineering">
+  <meta property="og:description" content="Pipelines de données, de l'ingestion à la restitution. Python, SQL, projets sur données ouvertes.">
+  <meta property="og:url" content="https://kepsilone.github.io/">
+  <meta property="og:image" content="https://kepsilone.github.io/assets/img/photo.jpg">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght,WONK@9..144,500,0;9..144,600,0&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js")</script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+  <a class="skip" href="#top">Aller au contenu</a>
+  <div class="progress" id="pg" aria-hidden="true"></div>
   <div class="wrap">
 
-    <header class="site-header">
-      <div class="topbar">
-        <a href="https://kepsilone.com" class="brand" target="_blank" rel="noopener" aria-label="Kepsilone">
-          <img src="assets/img/logo.png" alt="Kepsilone" class="logo">
-        </a>
-        <div class="topbar-center">
-          <h1 class="topbar-title">Data Engineering &amp; Machine Learning Porfolio</h1>
-        </div>
-        <nav class="toplinks" aria-label="Liens principaux">
-          <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
-          <a href="https://linkedin.com/in/sabeur-jedid" target="_blank" rel="noopener">LinkedIn</a>
-        </nav>
-      </div>
-     <div class="page-header">
-        <div class="page-header-left">
-          <p class="page-subtitle">
-            
-          </p>
-        </div>
-        <div class="page-header-right">
-          
-        </div>
-      </div>
+    <header class="site-header" id="nav">
+      <a href="#top" class="brand" aria-label="Sabeur Jedid, Kepsilone Data Engineering, accueil">
+        <img src="assets/img/logo.png" alt="Kepsilone · Data Engineering" class="brand-logo" width="900" height="264">
+        <span class="sr-only">Sabeur Jedid</span>
+      </a>
+      <nav class="toplinks" aria-label="Liens principaux">
+        <a class="l" href="#projects-index">Projets</a>
+        <a class="l" href="#parcours">Parcours</a>
+        <a class="l" href="#competences">Compétences</a>
+        <a href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="l" href="#contact">Contact</a>
+        <button type="button" class="kbd" id="palbtn" aria-label="Ouvrir le menu rapide">Menu <kbd>Ctrl K</kbd></button>
+        <a class="pill-link" href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
     </header>
 
-    <main>
+    <main id="top">
       <section class="hero">
-        <div class="hero-media">
-          <img src="assets/img/photo.png" alt="Portrait de Sabeur Jedid" class="hero-photo">
-        </div>
         <div class="hero-content">
-                <p class="section-text">
-                  
-  Ingénieur en fabrication additive métallique avec une forte appétence pour la data industrielle, je documente sur ce blog des projets personnels autour de l’ingestion, du traitement et de l’exploitation de données. 
-        </p>
-          <p class="hero-text">
-          </p>
-          <div class="hero-meta">
+          <h1 class="hero-title rv" style="--d:100ms">Sabeur Jedid</h1>
+          <p class="hero-text rv" style="--d:200ms">Data Engineering, intelligence artificielle et automatisation des workflows et des agents IA.</p>
+          <div class="hero-meta rv" style="--d:300ms">
             <span class="hero-badge">Python</span>
             <span class="hero-badge">SQL</span>
             <span class="hero-badge">Docker</span>
-            <span class="hero-badge">APIs</span>
-            <span class="hero-badge">Pipelines</span>
+            <span class="hero-badge">Git</span>
           </div>
-          <div class="actions">
-            
+          <div class="actions rv" style="--d:400ms">
+            <a class="btn btn-primary" href="#projects-index">Voir les projets</a>
+            <a class="btn btn-ghost" href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="btn btn-ghost" href="#contact">Me contacter</a>
           </div>
+        </div>
+        <div class="hero-media rv" style="--d:250ms">
+          <div class="hero-frame">
+            <img src="assets/img/photo.jpg" alt="Portrait de Sabeur Jedid" class="hero-photo" width="720" height="720">
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="apropos">
+        <h2 class="rv">À propos</h2>
+        <div class="about-text rv" style="--d:80ms">
+          <p>Je suis Sabeur Jedid. À travers ce portfolio, je partage mes projets, mes expérimentations et mon apprentissage autour du Data Engineering, de l’intelligence artificielle et de l’automatisation des workflows et des agents IA.</p>
+          <p>Je m'intéresse à la conception de solutions concrètes, de la collecte et du traitement des données jusqu'à leur analyse et leur exploitation.</p>
+          <p>Ce portfolio évolue au rythme de mon apprentissage, de mes découvertes et des projets que je développe.</p>
         </div>
       </section>
 
       <section class="section-intro" id="projects-index">
-        <h2></h2>
-        <p class="section-text">
-        </p>
+        <h2 class="rv">Projets</h2>
+        <p class="section-text rv">En construction. Chaque projet sera publié avec son code, son schéma d'architecture et ses résultats.</p>
       </section>
-
-      <div class="filters" role="tablist" aria-label="Filtres projets">
-        <button class="filter" type="button" data-cat="data-engineering" aria-selected="false">Data Engineering</button>
-        <button class="filter" type="button" data-cat="business-intelligence" aria-selected="false">Business Intelligence</button>
-        <button class="filter" type="button" data-cat="machine-learning" aria-selected="false">Machine Learning</button>
-        <button class="filter" type="button" data-cat="automatisation" aria-selected="false">Automatisation</button>
-      </div>
 
       <!-- DATA ENGINEERING -->
       <section class="cat-section" id="data-engineering" data-cat="data-engineering">
-        <div class="cat-header">
+        <div class="cat-header rv">
           <div class="cat-heading">
-            <span class="cat-dot" style="background:#2563eb;"></span>
+            <span class="cat-dot dot-blue" aria-hidden="true"></span>
             <h2 class="cat-title">Data Engineering</h2>
-            <span class="cat-count">1 projet</span>
+            <span class="cat-count">2 projets</span>
           </div>
           <span class="cat-line" aria-hidden="true"></span>
         </div>
         <div class="projects">
-          <article class="project">
+
+          <article class="project rv">
             <div class="project-body">
               <div class="project-topline">
-                <span class="project-label">Pipeline temps réel</span>
+                <span class="project-label">Données ouvertes</span>
               </div>
-              <h3>Pipeline streaming crypto — données temps réel</h3>
+              <h3>RNE Data Platform</h3>
               <p class="project-desc">
-                Ingestion en continu via WebSocket Binance, transit Kafka, stockage TimescaleDB
-                et exposition via FastAPI. 
+                Développement d'un pipeline de données à partir des données ouvertes du Registre national
+                des entreprises (INPI), avec un périmètre initial consacré aux établissements de l'Essonne.
               </p>
-              <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">Kafka</span>
-                <span class="tag">FastAPI</span>
-                <span class="tag">TimescaleDB</span>
-                <span class="tag">Docker</span>
-                <span class="tag">Grafana</span>
-              </div>
+              <dl class="facts">
+                <div>
+                  <dt>Parcours des données (prévu)</dt>
+                  <dd>
+                    <ol class="layers">
+                      <li class="layer layer-bronze"><span class="layer-dot" aria-hidden="true"></span><span><strong>Bronze</strong> fichiers bruts de l'INPI conservés tels quels</span></li>
+                      <li class="layer layer-silver"><span class="layer-dot" aria-hidden="true"></span><span><strong>Silver</strong> nettoyage, typage et contrôles qualité en SQL</span></li>
+                      <li class="layer layer-gold"><span class="layer-dot" aria-hidden="true"></span><span><strong>Gold</strong> modèle analytique sur les établissements de l'Essonne</span></li>
+                    </ol>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Technologies envisagées</dt>
+                  <dd>
+                    <div class="tags">
+                      <span class="tag">Python</span>
+                      <span class="tag">DuckDB</span>
+                      <span class="tag">dbt</span>
+                      <span class="tag">Streamlit</span>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
             </div>
             <div class="project-footer">
               <div class="status">
                 <span class="dot dot-wip" aria-hidden="true"></span>
-                <span>En cours · Mar 2026</span>
-              </div>
-              <div class="project-links">
-                <a class="btn btn-primary" href="https://github.com/Kepsilone/crypto-streaming-pipeline" target="_blank" rel="noopener">Code</a>
-                <a class="btn btn-ghost" href="https://kepsilone.com/projets/pipeline-streaming-crypto/" target="_blank" rel="noopener">Détail</a>
+                <span>Statut : en préparation</span>
               </div>
             </div>
           </article>
+
+          <article class="project rv">
+            <div class="project-body">
+              <div class="project-topline">
+                <span class="project-label">Données de procédé</span>
+              </div>
+              <h3>Suivi de données de fabrication</h3>
+              <p class="project-desc">
+                Projet de traitement de données publiques de fabrication pour organiser, contrôler
+                et analyser des mesures de production.
+              </p>
+              <dl class="facts">
+                <div>
+                  <dt>Parcours des données (prévu)</dt>
+                  <dd>
+                    <ol class="layers">
+                      <li class="layer layer-bronze"><span class="layer-dot" aria-hidden="true"></span><span><strong>Bronze</strong> mesures de production brutes</span></li>
+                      <li class="layer layer-silver"><span class="layer-dot" aria-hidden="true"></span><span><strong>Silver</strong> contrôles de qualité et normalisation</span></li>
+                      <li class="layer layer-gold"><span class="layer-dot" aria-hidden="true"></span><span><strong>Gold</strong> indicateurs prêts pour le tableau de bord</span></li>
+                    </ol>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Technologies envisagées</dt>
+                  <dd>
+                    <div class="tags">
+                      <span class="tag">Python</span>
+                      <span class="tag">SQL</span>
+                      <span class="tag">Power BI</span>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div class="project-footer">
+              <div class="status">
+                <span class="dot dot-soon" aria-hidden="true"></span>
+                <span>Statut : à venir</span>
+              </div>
+            </div>
+          </article>
+
         </div>
       </section>
 
-      <!-- BUSINESS INTELLIGENCE -->
-      <section class="cat-section" id="business-intelligence" data-cat="business-intelligence">
-        <div class="cat-header">
-          <div class="cat-heading">
-            <span class="cat-dot" style="background:#059669;"></span>
-            <h2 class="cat-title">Business Intelligence</h2>
-            <span class="cat-count">À venir</span>
+      <!-- Catégories à réintroduire quand un vrai projet existe :
+           Business Intelligence, Machine Learning, Automatisation.
+           Reprendre le bloc <section class="cat-section"> ci-dessus. -->
+      <section class="parcours" id="parcours">
+        <h2 class="rv">Parcours</h2>
+        <ol class="timeline">
+          <li class="tl rv" style="--d:0ms">
+            <span class="tl-date">Orientation actuelle</span>
+            <h3>Data Engineering &amp; Intelligence artificielle</h3>
+            <p>Développement de projets autour des pipelines de données, de Python, SQL et des applications de l'intelligence artificielle.</p>
+          </li>
+          <li class="tl rv" style="--d:80ms">
+            <span class="tl-date">Formation</span>
+            <h3>Ingénierie et méthodes numériques</h3>
+            <ul class="tl-edu">
+              <li><strong>INSA Rouen</strong> — Master 2 Mécanique des matériaux <span class="tl-year">2015</span></li>
+              <li><strong>Université d'Évry</strong> — Master 2 Modélisation et méthodes numériques pour la mécanique <span class="tl-year">2018</span></li>
+            </ul>
+          </li>
+          <li class="tl rv" style="--d:160ms">
+            <span class="tl-date">Expérience</span>
+            <h3>Expérience professionnelle</h3>
+            <p>Plusieurs années en ingénierie des procédés, avec des activités de modélisation, de simulation numérique et d'analyse de données techniques.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="skills" id="competences">
+        <h2 class="rv">Compétences</h2>
+        <div class="skill-grid">
+          <div class="skill rv" style="--d:0ms"><h3>Langages</h3><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span></div></div>
+          <div class="skill rv" style="--d:80ms"><h3>Outils</h3><div class="tags"><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">GitHub</span></div></div>
+                            <div class="skill rv" style="--d:160ms"><h3>Certifications</h3>
+            <ul class="cert-list">
+              <li><strong>Microsoft Certified : Fabric Data Engineer Associate</strong> <span class="cert-st">obtenue · oct. 2026</span></li>
+            </ul>
           </div>
-          <span class="cat-line" aria-hidden="true"></span>
-        </div>
-        <div class="projects">
-          <div class="empty">
-            <strong>Section en préparation.</strong>
-            <p>Dashboards, reporting, indicateurs métier et restitution décisionnelle.</p>
+<div class="skill rv" style="--d:240ms"><h3>Formation continue</h3>
+            <ul class="cert-list">
+              <li><strong>CNAM</strong> · module STA101 <span class="cert-st">validé</span></li>
+              <li><strong>CNAM</strong> · module RCP208 <span class="cert-st">validé</span></li>
+            </ul>
           </div>
         </div>
       </section>
-
-      <!-- MACHINE LEARNING -->
-      <section class="cat-section" id="machine-learning" data-cat="machine-learning">
-        <div class="cat-header">
-          <div class="cat-heading">
-            <span class="cat-dot" style="background:#7c3aed;"></span>
-            <h2 class="cat-title">Machine Learning</h2>
-            <span class="cat-count">À venir</span>
-          </div>
-          <span class="cat-line" aria-hidden="true"></span>
-        </div>
-        <div class="projects">
-          <div class="empty">
-            <strong>Section en préparation.</strong>
-            <p>Détection d'anomalies, modèles supervisés, classification et séries temporelles.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- AUTOMATISATION -->
-      <section class="cat-section" id="automatisation" data-cat="automatisation">
-        <div class="cat-header">
-          <div class="cat-heading">
-            <span class="cat-dot" style="background:#d97706;"></span>
-            <h2 class="cat-title">Automatisation</h2>
-            <span class="cat-count">À venir</span>
-          </div>
-          <span class="cat-line" aria-hidden="true"></span>
-        </div>
-        <div class="projects">
-          <div class="empty">
-            <strong>Section en préparation.</strong>
-            <p>ETL, scripts batch, automatisation Python et workflows orientés productivité.</p>
+      <section class="contact" id="contact">
+        <div class="contact-card rv">
+          <h2>Contact</h2>
+          <p class="contact-text">Un projet, une question, une idée à échanger ?<br>Écrivez-moi sur LinkedIn.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">Me contacter sur LinkedIn ↗</a>
           </div>
         </div>
       </section>
@@ -177,39 +234,25 @@
 
     <footer class="site-footer">
       <div class="footer-left">
-        <p>© 2026 Kepsilone · Sabeur Jedid</p>
+        <p class="footer-name">Sabeur Jedid</p>
+        <p class="footer-copy">© 2026 · Kepsilone · Data Engineering</p>
       </div>
-      <div class="footer-right">
-        <a href="mailto:contact@kepsilone.com">Email</a>
-        <span>·</span>
-        <a href="https://github.com/KepsiloneAnalytics" target="_blank" rel="noopener">GitHub</a>
-        <span>·</span>
-        <a href="https://kepsilone.com" target="_blank" rel="noopener">kepsilone.com</a>
-      </div>
+      <nav class="footer-right" aria-label="Contact">
+        <a href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
     </footer>
 
   </div>
 
-  <script>
-    (function () {
-      var filters = document.querySelectorAll('.filter');
-      var sections = document.querySelectorAll('.cat-section');
-      filters.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var cat = btn.getAttribute('data-cat');
-          filters.forEach(function (b) {
-            b.classList.remove('active');
-            b.setAttribute('aria-selected', 'false');
-          });
-          btn.classList.add('active');
-          btn.setAttribute('aria-selected', 'true');
-          sections.forEach(function (section) {
-            var sectionCat = section.getAttribute('data-cat');
-            section.style.display = (cat === 'all' || sectionCat === cat) ? 'block' : 'none';
-          });
-        });
-      });
-    })();
-  </script>
+  <div id="pal" role="dialog" aria-modal="true" aria-label="Menu rapide" hidden>
+    <div class="pal-box">
+      <input id="pi" type="text" placeholder="Aller à…" aria-label="Menu rapide" autocomplete="off" spellcheck="false">
+      <ul id="pl" role="listbox"></ul>
+      <p class="pal-help">↑ ↓ pour choisir · Entrée pour valider · Échap pour fermer</p>
+    </div>
+  </div>
+  <button type="button" id="up" aria-label="Revenir en haut">↑</button>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
