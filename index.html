@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add("js")</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=5">
+  <link rel="stylesheet" href="assets/css/style.css?v=6">
 </head>
 <body>
   <a class="skip" href="#top">Aller au contenu</a>
@@ -104,11 +104,50 @@
           <div class="cat-heading">
             <span class="cat-dot dot-blue" aria-hidden="true"></span>
             <h2 class="cat-title">Data Engineering</h2>
-            <span class="cat-count">2 projets</span>
+            <span class="cat-count">3 projets</span>
           </div>
           <span class="cat-line" aria-hidden="true"></span>
         </div>
         <div class="projects">
+
+          <article class="project rv">
+            <div class="project-body">
+              <div class="project-topline">
+                <span class="project-label">Streaming temps réel</span>
+              </div>
+              <h3>Crypto Streaming Pipeline</h3>
+              <p class="project-desc">
+                Pipeline événementiel qui ingère en continu les transactions BTCUSDT de Binance,
+                les fait transiter par Kafka, les valide puis les stocke dans une base time-series,
+                avec une API REST et un tableau de bord temps réel.
+              </p>
+              <dl class="facts">
+                <div>
+                  <dt>Technologies</dt>
+                  <dd>
+                    <div class="tags">
+                      <span class="tag">Python</span>
+                      <span class="tag">Kafka</span>
+                      <span class="tag">TimescaleDB</span>
+                      <span class="tag">FastAPI</span>
+                      <span class="tag">Grafana</span>
+                      <span class="tag">Docker</span>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div class="project-footer">
+              <div class="status">
+                <span class="dot dot-ok" aria-hidden="true"></span>
+                <span>Statut : V1 disponible</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-ghost btn-sm" href="https://github.com/Kepsilone/crypto-streaming-pipeline" target="_blank" rel="noopener">Voir le code ↗</a>
+                <a class="btn btn-primary btn-sm" href="projets/crypto-streaming-pipeline.html">Lire l'article</a>
+              </div>
+            </div>
+          </article>
 
           <article class="project rv">
             <div class="project-body">
@@ -138,6 +177,10 @@
               <div class="status">
                 <span class="dot dot-wip" aria-hidden="true"></span>
                 <span>Statut : en préparation</span>
+              </div>
+              <div class="project-links">
+                <span class="btn btn-off btn-sm" aria-disabled="true" title="Le dépôt sera publié prochainement">Code bientôt disponible</span>
+                <a class="btn btn-primary btn-sm" href="projets/rne-data-platform.html">Lire l'article</a>
               </div>
             </div>
           </article>
@@ -169,6 +212,10 @@
               <div class="status">
                 <span class="dot dot-soon" aria-hidden="true"></span>
                 <span>Statut : à venir</span>
+              </div>
+              <div class="project-links">
+                <span class="btn btn-off btn-sm" aria-disabled="true" title="Le dépôt sera publié prochainement">Code bientôt disponible</span>
+                <a class="btn btn-primary btn-sm" href="projets/suivi-donnees-fabrication.html">Lire l'article</a>
               </div>
             </div>
           </article>

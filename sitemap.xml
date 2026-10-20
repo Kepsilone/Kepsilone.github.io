@@ -5,4 +5,19 @@
     <lastmod>2026-10-20</lastmod>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://kepsilone.github.io/projets/crypto-streaming-pipeline.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kepsilone.github.io/projets/rne-data-platform.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kepsilone.github.io/projets/suivi-donnees-fabrication.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <priority>0.8</priority>
+  </url>
 </urlset>

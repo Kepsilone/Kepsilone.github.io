@@ -450,6 +450,19 @@ main {
 
 .dot-wip { background: var(--accent); }
 .dot-soon { background: #8A7968; }
+.dot-ok { background: #3C7A4A; }
+
+/* Boutons des cartes projet */
+.project-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn-sm { padding: 9px 18px; font-size: 14px; }
+.btn-off {
+  border-color: var(--line);
+  color: var(--ink-3);
+  font-weight: 500;
+  cursor: not-allowed;
+}
+.btn-off:hover { transform: none; }
+.btn-off::after { display: none; }
 
 .facts {
   display: flex;
