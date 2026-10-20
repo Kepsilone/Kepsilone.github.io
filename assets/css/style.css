@@ -21,6 +21,7 @@
   --glow: rgba(181, 71, 31, 0.16);
   --warm: #D9A441;
   --serif: "Fraunces", Georgia, serif;
+  --name: "Playfair Display", Georgia, serif;
   --sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
@@ -167,7 +168,7 @@ button:focus-visible {
 
 .hero-title {
   margin: 0;
-  font-family: var(--serif);
+  font-family: var(--name);
   font-weight: 600;
   font-size: clamp(36px, 5.4vw, 62px);
   line-height: 1.07;
@@ -495,7 +496,7 @@ main {
 
 .footer-name {
   margin: 0;
-  font-family: var(--serif);
+  font-family: var(--name);
   font-size: 26px;
   font-weight: 600;
   color: #FBF6EF;
