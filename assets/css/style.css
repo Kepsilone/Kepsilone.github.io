@@ -1,6 +1,6 @@
 /* ==========================================================================
    Sabeur Jedid — portfolio
-   Palette chaleureuse, polices Fraunces (titres) et DM Sans (texte)
+   Palette chaleureuse, polices Playfair Display (titres) et DM Sans (texte)
    ========================================================================== */
 
 :root {
@@ -20,7 +20,7 @@
   --shadow: 0 6px 18px rgba(74, 59, 46, 0.07);
   --glow: rgba(181, 71, 31, 0.16);
   --warm: #D9A441;
-  --serif: "Fraunces", Georgia, serif;
+  --serif: "Playfair Display", Georgia, serif;
   --name: "Playfair Display", Georgia, serif;
   --sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
