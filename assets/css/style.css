@@ -802,15 +802,6 @@ main {
 .tl-edu li { margin-bottom: 8px; }
 .tl-edu li:last-child { margin-bottom: 0; }
 .tl-edu strong { color: var(--ink); }
-/* Parcours en deux blocs compacts */
-.pc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
-.pc { padding: 20px 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
-.pc .tl-date { margin-bottom: 12px; }
-.pc-list { margin: 0; padding: 0; list-style: none; color: var(--ink-2); line-height: 1.5; }
-.pc-list li { margin-bottom: 10px; }
-.pc-list li:last-child { margin-bottom: 0; }
-.pc-list strong { color: var(--ink); }
-@media (max-width: 720px) { .pc { padding: 18px; } }
 .tl-year { margin-left: 6px; padding: 2px 9px; border-radius: 999px; background: var(--bg-alt); border: 1px solid var(--line); font-size: 13px; font-weight: 700; color: var(--ink-3); white-space: nowrap; }
 
 /* ---------- Certifications ---------- */
