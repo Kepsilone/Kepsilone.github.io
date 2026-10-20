@@ -803,6 +803,7 @@ main {
 .tl-edu li:last-child { margin-bottom: 0; }
 .tl-edu strong { color: var(--ink); }
 .tl-year { margin-left: 6px; padding: 2px 9px; border-radius: 999px; background: var(--bg-alt); border: 1px solid var(--line); font-size: 13px; font-weight: 700; color: var(--ink-3); white-space: nowrap; }
+.tl h3 .tl-year { font-family: var(--sans); vertical-align: middle; }
 
 /* ---------- Certifications ---------- */
 .cert-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; color: var(--ink-2); font-size: 15px; }
