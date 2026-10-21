@@ -2,9 +2,11 @@
 
 **Site en ligne : [kepsilone.github.io](https://kepsilone.github.io/)**
 
-Portfolio de Sabeur Jedid, ingénieur en reconversion vers le Data Engineering après huit ans en ingénierie des procédés (modélisation, simulation numérique, analyse de données techniques).
+Portfolio personnel consacré au Data Engineering, à l'intelligence artificielle et à l'automatisation.
 
-Le site présente mon parcours, mes compétences et mes projets de pipelines de données, chacun avec une page article qui détaille l'objectif, les données, les étapes et les choix techniques.
+À travers Kepsilone, je partage mes projets, mes expérimentations et ma progression dans l'apprentissage de ces domaines.
+
+Le site présente mes compétences, mon parcours et mes projets techniques. Chaque projet a vocation à être accompagné d'une documentation décrivant ses objectifs, les données utilisées, les technologies mises en œuvre et les résultats obtenus.
 
 ## Projets présentés
 
