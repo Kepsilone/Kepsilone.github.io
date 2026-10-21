@@ -741,6 +741,16 @@ main {
   box-shadow: var(--shadow);
 }
 .skill h3 { margin: 0 0 14px; font: 600 20px var(--serif); }
+/* Compétences */
+.sk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; }
+.sk-card { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+.sk-ico { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 14px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); }
+.sk-ico svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sk-card h3 { margin: 0 0 6px; font: 600 20px var(--serif); }
+.sk-card > p { margin: 0 0 16px; font-size: 15px; line-height: 1.5; color: var(--ink-3); }
+.sk-strong { color: var(--ink-2); font-weight: 700; }
+.sk-card .cert-st { margin-left: 0; }
+@media (max-width: 720px) { .sk-card { padding: 20px; } }
 .skill h3 em { display: inline-block; margin-left: 6px; font: 500 12px var(--sans); font-style: normal; color: var(--ink-3); letter-spacing: .04em; text-transform: uppercase; }
 
 /* ---------- Menu rapide ---------- */

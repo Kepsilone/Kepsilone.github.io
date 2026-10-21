@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add("js")</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=6">
+  <link rel="stylesheet" href="assets/css/style.css?v=7">
 </head>
 <body>
   <a class="skip" href="#top">Aller au contenu</a>
@@ -192,7 +192,7 @@
         <ol class="timeline">
           <li class="tl rv" style="--d:0ms">
             <span class="tl-date">Orientation actuelle</span>
-            <h3>Data Engineering &amp; Intelligence artificielle</h3>
+            <h3>Data Engineering et intelligence artificielle</h3>
             <p>Développement de projets autour des pipelines de données, de Python, SQL et des applications de l'intelligence artificielle.</p>
           </li>
           <li class="tl rv" style="--d:80ms">
@@ -213,13 +213,69 @@
 
       <section class="skills" id="competences">
         <h2 class="rv">Compétences</h2>
-        <div class="skill-grid">
-          <div class="skill rv" style="--d:0ms"><h3>Langages</h3><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span></div></div>
-          <div class="skill rv" style="--d:80ms"><h3>Outils</h3><div class="tags"><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">GitHub</span></div></div>
-                            <div class="skill rv" style="--d:160ms"><h3>Certifications</h3>
-            <ul class="cert-list">
-              <li><strong>Microsoft Certified : Fabric Data Engineer Associate</strong> <span class="cert-st">obtenue · oct. 2026</span></li>
-            </ul>
+        <div class="sk-grid">
+          <div class="sk-card rv" style="--d:0ms">
+            <span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span>
+            <h3>Langages et analyse</h3>
+            <p>Manipulation, nettoyage et analyse de données.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">pandas · NumPy</span>
+            </div>
+          </div>
+
+          <div class="sk-card rv" style="--d:80ms">
+            <span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+            <h3>Data Engineering</h3>
+            <p>Pipelines d'ingestion, de transformation et de streaming.</p>
+            <div class="tags">
+              <span class="tag">Microsoft Fabric</span>
+              <span class="tag">PySpark</span>
+              <span class="tag">Kafka · streaming</span>
+              <span class="tag">Airflow</span>
+            </div>
+          </div>
+
+          <div class="sk-card rv" style="--d:160ms">
+            <span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
+            <h3>Bases de données</h3>
+            <p>Modélisation, requêtes analytiques et formats de stockage.</p>
+            <div class="tags">
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Parquet · Delta Lake</span>
+              <span class="tag">DuckDB</span>
+              <span class="tag">dbt</span>
+            </div>
+          </div>
+
+          <div class="sk-card rv" style="--d:0ms">
+            <span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+            <h3>Visualisation et BI</h3>
+            <p>Tableaux de bord et restitution des résultats.</p>
+            <div class="tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">Matplotlib · Plotly</span>
+              <span class="tag">Streamlit</span>
+            </div>
+          </div>
+
+          <div class="sk-card rv" style="--d:80ms">
+            <span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 9l3 2.5L7 14M12 14h5"/></svg></span>
+            <h3>Outils et API</h3>
+            <p>Environnements reproductibles, versionnement et services.</p>
+            <div class="tags">
+              <span class="tag">Git · GitHub</span>
+              <span class="tag">Docker</span>
+              <span class="tag">FastAPI · API REST</span>
+            </div>
+          </div>
+
+          <div class="sk-card rv" style="--d:160ms">
+            <span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></span>
+            <h3>Certification</h3>
+            <p><strong class="sk-strong">Microsoft Certified : Fabric Data Engineer Associate</strong></p>
+            <span class="cert-st">obtenue · oct. 2026</span>
           </div>
         </div>
       </section>
