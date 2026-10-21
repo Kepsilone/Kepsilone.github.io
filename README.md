@@ -6,7 +6,7 @@ Portfolio personnel consacré au Data Engineering, à l'intelligence artificiell
 
 À travers Kepsilone, je partage mes projets, mes expérimentations et ma progression dans l'apprentissage de ces domaines.
 
-Le site présente mes compétences, mon parcours et mes projets techniques. Chaque projet a vocation à être accompagné d'une documentation décrivant ses objectifs, les données utilisées, les technologies mises en œuvre et les résultats obtenus.
+Le site présente mes compétences, mon parcours et mes projets techniques. Chaque projet sera accompagné d'une documentation décrivant ses objectifs, les données utilisées, les technologies mises en œuvre et les résultats obtenus.
 
 ## Projets présentés
 
