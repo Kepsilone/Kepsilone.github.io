@@ -37,16 +37,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add("js")</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=7">
+  <link rel="stylesheet" href="assets/css/style.css?v=8">
 </head>
 <body>
   <a class="skip" href="#top">Aller au contenu</a>
-  <div class="progress" id="pg" aria-hidden="true"></div>
   <div class="wrap">
 
     <header class="site-header" id="nav">
       <a href="#top" class="brand" aria-label="Sabeur JEDID, Kepsilone Data Engineering, accueil">
-        <img src="assets/img/logo.png" alt="Kepsilone · Data Engineering" class="brand-logo" width="900" height="264">
+        <img src="assets/img/logo.png?v=2" alt="Kepsilone · Data Engineering" class="brand-logo" width="400" height="117">
         <span class="sr-only">Sabeur JEDID</span>
       </a>
       <nav class="toplinks" aria-label="Liens principaux">
@@ -55,7 +54,6 @@
         <a class="l" href="#competences">Compétences</a>
         <a href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">LinkedIn</a>
         <a class="l" href="#contact">Contact</a>
-        <button type="button" class="kbd" id="palbtn" aria-label="Ouvrir le menu rapide">Menu <kbd>Ctrl K</kbd></button>
         <a class="pill-link" href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub ↗</a>
       </nav>
     </header>
@@ -65,6 +63,7 @@
         <div class="hero-content">
           <h1 class="hero-title rv" style="--d:100ms">Sabeur JEDID</h1>
           <p class="hero-text rv" style="--d:200ms">Data Engineering, intelligence artificielle, automatisation des workflows et des agents IA.</p>
+          <p class="hero-avail rv" style="--d:250ms"><span class="dot" aria-hidden="true"></span>Disponible pour un poste de Data Engineer · Île-de-France</p>
           <div class="hero-meta rv" style="--d:300ms">
             <span class="hero-badge">Python</span>
             <span class="hero-badge">SQL</span>
@@ -95,7 +94,7 @@
 
       <section class="section-intro" id="projects-index">
         <h2 class="rv">Projets</h2>
-        <p class="section-text rv">En construction. Chaque projet sera publié avec son code, son schéma d'architecture et ses résultats.</p>
+        <p class="section-text rv">Projets de pipelines de données, documentés de l'objectif aux résultats.</p>
       </section>
 
       <!-- DATA ENGINEERING -->
@@ -303,14 +302,7 @@
 
   </div>
 
-  <div id="pal" role="dialog" aria-modal="true" aria-label="Menu rapide" hidden>
-    <div class="pal-box">
-      <input id="pi" type="text" placeholder="Aller à…" aria-label="Menu rapide" autocomplete="off" spellcheck="false">
-      <ul id="pl" role="listbox"></ul>
-      <p class="pal-help">↑ ↓ pour choisir · Entrée pour valider · Échap pour fermer</p>
-    </div>
-  </div>
   <button type="button" id="up" aria-label="Revenir en haut">↑</button>
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>

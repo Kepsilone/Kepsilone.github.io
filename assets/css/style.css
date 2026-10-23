@@ -587,18 +587,6 @@ main {
 }
 .skip:focus { top: 12px; }
 
-/* Barre de progression de lecture */
-.progress {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 3px;
-  width: 0;
-  z-index: 30;
-  background: linear-gradient(90deg, var(--accent), var(--warm));
-  pointer-events: none;
-}
-
 /* Apparition au défilement */
 .js .rv {
   opacity: 0;
@@ -608,20 +596,8 @@ main {
 }
 .js .rv.in { opacity: 1; transform: none; }
 
-/* Boutons : reflet qui passe au survol */
-.btn, .toplinks .pill-link { position: relative; overflow: hidden; transition: transform .2s, border-color .2s; }
-.btn::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -130%;
-  width: 55%;
-  height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .38), transparent);
-  transform: skewX(-20deg);
-  pointer-events: none;
-}
-.btn:hover::after { left: 150%; transition: left .75s; }
+/* Boutons */
+.btn, .toplinks .pill-link { transition: transform .2s, border-color .2s; }
 .btn-ghost:hover { border-color: var(--accent); }
 
 /* Lien actif dans le menu */
@@ -630,33 +606,9 @@ main {
 /* Photo : halo qui respire + inclinaison au survol */
 .hero-photo { transition: transform .3s; }
 
-/* Cartes : élévation, halo qui suit la souris, bordure dégradée */
-.project {
-  position: relative;
-  transition: transform .25s, border-color .25s, box-shadow .25s, opacity .7s ease;
-}
-.project > * { position: relative; }
-.js .project.rv.in { transition: opacity .7s ease, transform .25s, border-color .25s, box-shadow .25s; }
-.project::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .3s;
-}
-.project::after {
-  padding: 1px;
-  background: linear-gradient(135deg, var(--accent), transparent 45%, var(--warm));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-}
-.project:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 18px 30px -22px var(--accent); }
-.project:hover::after { opacity: 1; }
-.project h3 { transition: color .2s; }
-.project:hover h3 { color: var(--accent); }
+/* Cartes projet : bordure au survol */
+.project { transition: border-color .25s, opacity .7s ease, transform .7s ease; }
+.project:hover { border-color: #D2BC9C; }
 
 /* Étiquettes : apparition en cascade + survol */
 .js .rv .tag, .js .rv .hero-badge { opacity: 0; transform: translateY(8px); transition: opacity .5s, transform .5s, background .2s, color .2s; }
@@ -724,7 +676,7 @@ main {
 }
 
 @media print {
-  .progress, #up, #pal,  .skip { display: none; }
+  #up, .skip { display: none; }
   .js .rv { opacity: 1; transform: none; }
 }
 
@@ -753,36 +705,13 @@ main {
 @media (max-width: 720px) { .sk-card { padding: 20px; } }
 .skill h3 em { display: inline-block; margin-left: 6px; font: 500 12px var(--sans); font-style: normal; color: var(--ink-3); letter-spacing: .04em; text-transform: uppercase; }
 
-/* ---------- Menu rapide ---------- */
-.kbd {
-  padding: 8px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--card);
-  color: var(--ink-2);
-  font: 500 14px var(--sans);
-  cursor: pointer;
-  transition: border-color .2s, transform .2s;
-}
-.kbd:hover { border-color: var(--accent); transform: translateY(-2px); }
-.kbd kbd { margin-left: 4px; padding: 1px 6px; border-radius: 6px; background: var(--bg-alt); font: 500 12px ui-monospace, Menlo, Consolas, monospace; }
-#pal { position: fixed; inset: 0; z-index: 60; display: flex; justify-content: center; align-items: flex-start; padding: 14vh 16px 0; background: rgba(43, 33, 24, .45); }
-#pal[hidden] { display: none; }
-.pal-box { width: 100%; max-width: 520px; border-radius: var(--radius); background: var(--card); box-shadow: 0 30px 60px -20px rgba(43, 33, 24, .6); overflow: hidden; animation: fi .2s ease both; }
-#pi { width: 100%; padding: 18px 20px; border: 0; border-bottom: 1px solid var(--line); outline: 0; background: transparent; color: var(--ink); font: 500 17px var(--sans); }
-#pl { margin: 0; padding: 8px; list-style: none; max-height: 320px; overflow-y: auto; }
-#pl li { padding: 11px 14px; border-radius: 12px; font-size: 16px; color: var(--ink-2); cursor: pointer; }
-#pl li small { margin-left: 8px; color: var(--ink-3); font-size: 13px; }
-#pl li.on, #pl li:hover { background: var(--accent-soft); color: var(--accent); }
-.pal-help { margin: 0; padding: 10px 20px 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); }
+/* Disponibilité (sous le nom) */
+.hero-avail { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 15px; font-weight: 500; color: var(--ink-2); }
+.hero-avail .dot { background: #3C7A4A; }
 
 @media (max-width: 720px) {
-  .kbd kbd { display: none; }
   .skills { padding: 48px 0 56px; }
   .skills h2 { font-size: 36px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .pal-box { animation: none; }
 }
 
 /* ---------- Parcours ---------- */
