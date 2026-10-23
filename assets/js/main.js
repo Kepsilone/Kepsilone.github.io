@@ -34,14 +34,29 @@
     $$('main section[id]').forEach(function (s) { so.observe(s); });
   }
 
-  /* Ombre du header, retour en haut */
-  var up = $('#up'), nav = $('#nav');
+  /* Progression, ombre du header, retour en haut */
+  var pg = $('#pg'), up = $('#up'), nav = $('#nav');
   function onScroll() {
+    var h = document.documentElement, m = h.scrollHeight - h.clientHeight;
+    if (pg) pg.style.width = (m > 0 ? scrollY / m * 100 : 0) + '%';
     up.classList.toggle('show', scrollY > 600);
     nav.classList.toggle('sc', scrollY > 8);
   }
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
   up.addEventListener('click', function () { scrollTo({ top: 0, behavior: still ? 'auto' : 'smooth' }); });
+
+  /* Halo et inclinaison 3D des cartes */
+  $$('.project').forEach(function (c) {
+    c.addEventListener('pointermove', function (e) {
+      var r = c.getBoundingClientRect();
+      if (!still && matchMedia('(pointer: fine)').matches) {
+        var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+        c.style.transition = 'transform .1s';
+        c.style.transform = 'perspective(800px) rotateX(' + (-py * 5) + 'deg) rotateY(' + (px * 7) + 'deg) translateY(-4px)';
+      }
+    });
+    c.addEventListener('pointerleave', function () { c.style.transition = 'transform .5s'; c.style.transform = ''; });
+  });
 
 })();
