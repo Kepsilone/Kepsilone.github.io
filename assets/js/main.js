@@ -46,6 +46,64 @@
   onScroll();
   up.addEventListener('click', function () { scrollTo({ top: 0, behavior: still ? 'auto' : 'smooth' }); });
 
+  /* Rubrique Apprentissage : billets lus dans assets/data/apprentissage.json */
+  var learn = $('#learn-list');
+  if (learn && window.fetch) {
+    fetch('assets/data/apprentissage.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (items) {
+        if (!Array.isArray(items) || !items.length) return;
+        items.sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+        learn.innerHTML = '';
+        var shown = 6;
+        function fmt(d) {
+          var p = String(d).split('-');
+          var mois = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+          return p.length === 3 ? (+p[2]) + ' ' + mois[+p[1] - 1] + ' ' + p[0] : d;
+        }
+        function card(it) {
+          var el = document.createElement('article');
+          el.className = 'learn-item';
+          var meta = document.createElement('p');
+          meta.className = 'learn-meta';
+          meta.textContent = fmt(it.date) + (it.tag ? ' · ' + it.tag : '');
+          var h = document.createElement('h3');
+          h.textContent = it.titre || '';
+          var p = document.createElement('p');
+          p.className = 'learn-text';
+          p.textContent = it.texte || '';
+          el.appendChild(meta); el.appendChild(h); el.appendChild(p);
+          if (it.lien) {
+            var a = document.createElement('a');
+            a.className = 'learn-link';
+            a.href = it.lien;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.textContent = 'Lire la suite ↗';
+            el.appendChild(a);
+          }
+          return el;
+        }
+        items.forEach(function (it, i) {
+          var el = card(it);
+          if (i >= shown) el.hidden = true;
+          learn.appendChild(el);
+        });
+        if (items.length > shown) {
+          var more = document.createElement('button');
+          more.type = 'button';
+          more.className = 'btn btn-ghost btn-sm learn-more';
+          more.textContent = 'Voir les billets précédents';
+          more.addEventListener('click', function () {
+            $$('.learn-item[hidden]', learn).forEach(function (el) { el.hidden = false; });
+            more.remove();
+          });
+          learn.parentNode.appendChild(more);
+        }
+      })
+      .catch(function () {});
+  }
+
   /* Halo et inclinaison 3D des cartes */
   $$('.project').forEach(function (c) {
     c.addEventListener('pointermove', function (e) {

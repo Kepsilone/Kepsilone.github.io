@@ -8,14 +8,13 @@ Portfolio personnel consacré au Data Engineering, à l'intelligence artificiell
 
 Le site présente mes compétences, mon parcours et mes projets techniques. Chaque projet sera accompagné d'une documentation décrivant ses objectifs, les données utilisées, les technologies mises en œuvre et les résultats obtenus.
 
-## Projets présentés
+## Projets
 
-| Projet | Sujet | Stack | Statut |
-|---|---|---|---|
-| [Analyse des vols](https://kepsilone.github.io/projets/analyse-des-vols.html) | Flight Data Monitoring sur des enregistrements de vol réels publiés par la NASA | Python, PySpark, Parquet, DuckDB, Power BI | En préparation |
-| [RNE Data Platform](https://kepsilone.github.io/projets/rne-data-platform.html) | Pipeline sur les données ouvertes du Registre national des entreprises (INPI), établissements de l'Essonne | Python, DuckDB, dbt, Streamlit | En préparation |
-| [Suivi de données de fabrication](https://kepsilone.github.io/projets/suivi-donnees-fabrication.html) | Contrôle et analyse de mesures de production | Python, SQL, Power BI | À venir |
-| [Observation des météores](https://kepsilone.github.io/projets/observation-des-meteores.html) | Trajectoires de météores détectées par un réseau mondial de caméras (Global Meteor Network) | Python, Parquet, DuckDB, Power BI | À venir |
+Les projets sont en cours de préparation et seront publiés au fur et à mesure, chacun avec son code et sa documentation.
+
+## Apprentissage
+
+La rubrique Apprentissage du site partage au fil des jours une notion apprise, un article lu ou une expérience.
 
 ## Comment le site est construit
 
@@ -26,7 +25,7 @@ Le site présente mes compétences, mon parcours et mes projets techniques. Chaq
 
 ```
 ├── index.html              Page d'accueil
-├── projets/                Une page article par projet
+├── assets/data/apprentissage.json   Billets de la rubrique Apprentissage
 ├── assets/
 │   ├── css/style.css       Styles du site
 │   ├── css/article.css     Styles des pages article

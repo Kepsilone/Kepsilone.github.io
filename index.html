@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add("js")</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=9">
+  <link rel="stylesheet" href="assets/css/style.css?v=10">
 </head>
 <body>
   <a class="skip" href="#top">Aller au contenu</a>
@@ -51,6 +51,7 @@
       </a>
       <nav class="toplinks" aria-label="Liens principaux">
         <a class="l" href="#projects-index">Projets</a>
+        <a class="l" href="#apprentissage">Apprentissage</a>
         <a class="l" href="#parcours">Parcours</a>
         <a class="l" href="#competences">Compétences</a>
         <a href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">LinkedIn</a>
@@ -93,175 +94,22 @@
         </div>
       </section>
 
-      <section class="section-intro" id="projects-index">
+      <section class="section-intro projects-soon" id="projects-index">
         <h2 class="rv">Projets</h2>
-        <p class="section-text rv">Projets de pipelines de données, documentés de l'objectif aux résultats.</p>
-      </section>
-
-      <!-- DATA ENGINEERING -->
-      <section class="cat-section" id="data-engineering" data-cat="data-engineering">
-        <div class="cat-header rv">
-          <div class="cat-heading">
-            <span class="cat-dot dot-blue" aria-hidden="true"></span>
-            <h2 class="cat-title">Data Engineering</h2>
-            <span class="cat-count">4 projets</span>
-          </div>
-          <span class="cat-line" aria-hidden="true"></span>
-        </div>
-        <div class="projects">
-
-          <article class="project rv">
-            <div class="project-body">
-              <div class="project-topline">
-                <span class="project-label">Données de vol</span>
-              </div>
-              <h3>Analyse des vols (Flight Data Monitoring)</h3>
-              <p class="project-desc">
-                Pipeline de traitement d'enregistrements de vol réels publiés par la NASA : découpage
-                en phases de vol et détection des dépassements de limites, comme l'analyse menée
-                après chaque vol en compagnie aérienne.
-              </p>
-              <dl class="facts">
-                <div>
-                  <dt>Technologies envisagées</dt>
-                  <dd>
-                    <div class="tags">
-                      <span class="tag">Python</span>
-                      <span class="tag">PySpark</span>
-                      <span class="tag">Parquet</span>
-                      <span class="tag">DuckDB</span>
-                      <span class="tag">Power BI</span>
-                    </div>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-            <div class="project-footer">
-              <div class="status">
-                <span class="dot dot-wip" aria-hidden="true"></span>
-                <span>Statut : en préparation</span>
-              </div>
-              <div class="project-links">
-                <span class="btn btn-off btn-sm" aria-disabled="true" title="Le dépôt sera publié prochainement">Code bientôt disponible</span>
-                <a class="btn btn-primary btn-sm" href="projets/analyse-des-vols.html">Lire l'article</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project rv">
-            <div class="project-body">
-              <div class="project-topline">
-                <span class="project-label">Données ouvertes</span>
-              </div>
-              <h3>RNE Data Platform</h3>
-              <p class="project-desc">
-                Développement d'un pipeline de données à partir des données ouvertes du Registre national
-                des entreprises (INPI), avec un périmètre initial consacré aux établissements de l'Essonne.
-              </p>
-              <dl class="facts">
-                <div>
-                  <dt>Technologies envisagées</dt>
-                  <dd>
-                    <div class="tags">
-                      <span class="tag">Python</span>
-                      <span class="tag">DuckDB</span>
-                      <span class="tag">dbt</span>
-                      <span class="tag">Streamlit</span>
-                    </div>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-            <div class="project-footer">
-              <div class="status">
-                <span class="dot dot-wip" aria-hidden="true"></span>
-                <span>Statut : en préparation</span>
-              </div>
-              <div class="project-links">
-                <span class="btn btn-off btn-sm" aria-disabled="true" title="Le dépôt sera publié prochainement">Code bientôt disponible</span>
-                <a class="btn btn-primary btn-sm" href="projets/rne-data-platform.html">Lire l'article</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project rv">
-            <div class="project-body">
-              <div class="project-topline">
-                <span class="project-label">Données de procédé</span>
-              </div>
-              <h3>Suivi de données de fabrication</h3>
-              <p class="project-desc">
-                Projet de traitement de données publiques de fabrication pour organiser, contrôler
-                et analyser des mesures de production.
-              </p>
-              <dl class="facts">
-                <div>
-                  <dt>Technologies envisagées</dt>
-                  <dd>
-                    <div class="tags">
-                      <span class="tag">Python</span>
-                      <span class="tag">SQL</span>
-                      <span class="tag">Power BI</span>
-                    </div>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-            <div class="project-footer">
-              <div class="status">
-                <span class="dot dot-soon" aria-hidden="true"></span>
-                <span>Statut : à venir</span>
-              </div>
-              <div class="project-links">
-                <span class="btn btn-off btn-sm" aria-disabled="true" title="Le dépôt sera publié prochainement">Code bientôt disponible</span>
-                <a class="btn btn-primary btn-sm" href="projets/suivi-donnees-fabrication.html">Lire l'article</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project rv">
-            <div class="project-body">
-              <div class="project-topline">
-                <span class="project-label">Données spatiales</span>
-              </div>
-              <h3>Observation des météores</h3>
-              <p class="project-desc">
-                Pipeline de traitement des trajectoires de météores détectées par un réseau mondial
-                de caméras : contrôles physiques, rattachement aux essaims d'étoiles filantes
-                et analyse de leur activité au fil de l'année.
-              </p>
-              <dl class="facts">
-                <div>
-                  <dt>Technologies envisagées</dt>
-                  <dd>
-                    <div class="tags">
-                      <span class="tag">Python</span>
-                      <span class="tag">Parquet</span>
-                      <span class="tag">DuckDB</span>
-                      <span class="tag">Power BI</span>
-                    </div>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-            <div class="project-footer">
-              <div class="status">
-                <span class="dot dot-soon" aria-hidden="true"></span>
-                <span>Statut : à venir</span>
-              </div>
-              <div class="project-links">
-                <span class="btn btn-off btn-sm" aria-disabled="true" title="Le dépôt sera publié prochainement">Code bientôt disponible</span>
-                <a class="btn btn-primary btn-sm" href="projets/observation-des-meteores.html">Lire l'article</a>
-              </div>
-            </div>
-          </article>
-
+        <div class="soon-card rv" style="--d:80ms">
+          <p class="soon-title">Les pipelines sont en chantier.</p>
+          <p class="soon-text">Les données circulent, les tests passent presque tous au vert et le café coule à flot. Les projets arrivent très bientôt, documentés de l'objectif aux résultats.</p>
         </div>
       </section>
 
-      <!-- Catégories à réintroduire quand un vrai projet existe :
-           Business Intelligence, Machine Learning, Automatisation.
-           Reprendre le bloc <section class="cat-section"> ci-dessus. -->
+      <section class="learn" id="apprentissage">
+        <h2 class="rv">Apprentissage</h2>
+        <p class="section-text rv">Mon carnet de route vers le Data Engineering : une notion apprise, un article lu ou une expérience, partagés au fil des jours.</p>
+        <div class="learn-list" id="learn-list" aria-live="polite">
+          <p class="learn-empty">Premier billet très bientôt.</p>
+        </div>
+      </section>
+
       <section class="parcours" id="parcours">
         <h2 class="rv">Parcours</h2>
         <ol class="timeline">
@@ -379,6 +227,6 @@
   </div>
 
   <button type="button" id="up" aria-label="Revenir en haut">↑</button>
-  <script src="assets/js/main.js?v=3" defer></script>
+  <script src="assets/js/main.js?v=4" defer></script>
 </body>
 </html>
