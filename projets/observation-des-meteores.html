@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Observation des météores — Sabeur JEDID</title>
+  <meta name="description" content="Projet de Sabeur JEDID : pipeline de traitement des trajectoires de météores détectées par un réseau mondial de caméras, contrôles physiques et analyse des essaims d'étoiles filantes. Objectif, données et étapes prévues.">
+  <meta name="author" content="Sabeur JEDID">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="canonical" href="https://kepsilone.github.io/projets/observation-des-meteores.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sabeur JEDID">
+  <meta property="og:title" content="Observation des météores — Sabeur JEDID">
+  <meta property="og:description" content="Pipeline sur les trajectoires de météores détectées par un réseau mondial de caméras.">
+  <meta property="og:url" content="https://kepsilone.github.io/projets/observation-des-meteores.html">
+  <meta property="og:image" content="https://kepsilone.github.io/assets/img/photo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=9">
+  <link rel="stylesheet" href="../assets/css/article.css?v=1">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="site-header">
+      <a href="../index.html" class="brand" aria-label="Sabeur JEDID, accueil">
+        <img src="../assets/img/logo.png?v=2" alt="Kepsilone · Data Engineering" class="brand-logo" width="400" height="117">
+      </a>
+      <nav class="toplinks" aria-label="Liens principaux">
+        <a href="../index.html#projects-index">Projets</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="pill-link" href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main class="article">
+      <a class="crumb" href="../index.html#projects-index">← Retour aux projets</a>
+
+      <div class="article-head">
+        <span class="project-label">Données spatiales</span>
+        <h1>Observation des météores</h1>
+        <p class="lead">Un pipeline qui traite les trajectoires de météores détectées par un réseau mondial de caméras, vérifie leur cohérence physique et analyse l'activité des essaims d'étoiles filantes.</p>
+        <div class="article-meta">
+          <div class="status"><span class="dot dot-soon" aria-hidden="true"></span><span>Statut : à venir</span></div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Parquet</span><span class="tag">DuckDB</span><span class="tag">Power BI</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <span class="btn btn-off btn-sm" aria-disabled="true">Code bientôt disponible</span>
+        </div>
+      </div>
+
+      <p class="article-note">Ce projet est à venir. Cette page présente l'idée et la démarche prévue ; elle sera complétée avec le code et les résultats.</p>
+
+      <section>
+        <h2>Objectif</h2>
+        <p>Des réseaux de caméras, comme FRIPON en France, surveillent le ciel en continu pour détecter les météores et calculer leur trajectoire. Le projet construit un pipeline qui transforme ces détections en données <strong>fiables et analysables</strong> : combien de météores, à quelle altitude, à quelle vitesse, et à quel essaim ils appartiennent.</p>
+      </section>
+
+      <section>
+        <h2>Les données</h2>
+        <p>Le Global Meteor Network, un réseau mondial de caméras qui compte des stations en France, publie les trajectoires et les orbites calculées de chaque météore en fichiers CSV quotidiens et mensuels, sous licence ouverte CC BY 4.0.</p>
+        <p>Chaque enregistrement décrit un météore : date, position, altitudes de début et de fin, vitesse d'entrée, éléments d'orbite et essaim d'origine (Perséides, Géminides…).</p>
+      </section>
+
+      <section>
+        <h2>Les étapes prévues</h2>
+        <ol class="steps">
+          <li><strong>Ingestion (couche Bronze).</strong> Téléchargement des fichiers quotidiens, en ne chargeant que les nouveaux jours.</li>
+          <li><strong>Contrôles (couche Silver).</strong> Vérification de la cohérence physique (vitesse d'entrée entre environ 11 et 72 km/s, altitudes plausibles), suppression des doublons, typage des colonnes.</li>
+          <li><strong>Enrichissement (couche Gold).</strong> Rattachement de chaque météore à son essaim, regroupement par région et par période.</li>
+          <li><strong>Restitution.</strong> Activité des essaims au fil de l'année, altitudes et vitesses par essaim, détections au-dessus de la France.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Pourquoi ces technologies</h2>
+        <ul>
+          <li><strong>Python</strong> pour le téléchargement, les contrôles et l'orchestration</li>
+          <li><strong>Parquet et DuckDB</strong> pour stocker et interroger les données en local, sans abonnement cloud</li>
+          <li><strong>Power BI Desktop</strong> (gratuit) pour la restitution</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Résultats</h2>
+        <p>À venir : le volume traité, les indicateurs par essaim et des captures du tableau de bord seront ajoutés ici.</p>
+      </section>
+
+      <p class="article-note">Données : Global Meteor Network, licence CC BY 4.0.</p>
+
+      <div class="article-actions">
+        <a class="btn btn-ghost" href="../index.html#projects-index">Tous les projets</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-left">
+        <p class="footer-name">Sabeur JEDID</p>
+        <p class="footer-copy">© 2026 · Kepsilone · Data Engineering</p>
+      </div>
+      <nav class="footer-right" aria-label="Contact">
+        <a href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </footer>
+
+  </div>
+</body>
+</html>
