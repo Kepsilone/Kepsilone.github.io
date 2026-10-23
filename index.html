@@ -104,11 +104,87 @@
           <div class="cat-heading">
             <span class="cat-dot dot-blue" aria-hidden="true"></span>
             <h2 class="cat-title">Data Engineering</h2>
-            <span class="cat-count">2 projets</span>
+            <span class="cat-count">4 projets</span>
           </div>
           <span class="cat-line" aria-hidden="true"></span>
         </div>
         <div class="projects">
+
+          <article class="project rv">
+            <div class="project-body">
+              <div class="project-topline">
+                <span class="project-label">Streaming temps réel</span>
+              </div>
+              <h3>Crypto Streaming Pipeline</h3>
+              <p class="project-desc">
+                Pipeline événementiel qui ingère en continu les transactions BTCUSDT de Binance,
+                les fait transiter par Kafka, les valide puis les stocke dans une base time-series,
+                avec une API REST et un tableau de bord temps réel.
+              </p>
+              <dl class="facts">
+                <div>
+                  <dt>Technologies</dt>
+                  <dd>
+                    <div class="tags">
+                      <span class="tag">Python</span>
+                      <span class="tag">Kafka</span>
+                      <span class="tag">TimescaleDB</span>
+                      <span class="tag">FastAPI</span>
+                      <span class="tag">Grafana</span>
+                      <span class="tag">Docker</span>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div class="project-footer">
+              <div class="status">
+                <span class="dot dot-ok" aria-hidden="true"></span>
+                <span>Statut : V1 disponible</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-ghost btn-sm" href="https://github.com/Kepsilone/crypto-streaming-pipeline" target="_blank" rel="noopener">Voir le code ↗</a>
+                <a class="btn btn-primary btn-sm" href="projets/crypto-streaming-pipeline.html">Lire l'article</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project rv">
+            <div class="project-body">
+              <div class="project-topline">
+                <span class="project-label">Données de vol</span>
+              </div>
+              <h3>Analyse des vols (Flight Data Monitoring)</h3>
+              <p class="project-desc">
+                Pipeline de traitement d'enregistrements de vol réels publiés par la NASA : découpage
+                en phases de vol et détection des dépassements de limites, comme l'analyse menée
+                après chaque vol en compagnie aérienne.
+              </p>
+              <dl class="facts">
+                <div>
+                  <dt>Technologies envisagées</dt>
+                  <dd>
+                    <div class="tags">
+                      <span class="tag">Python</span>
+                      <span class="tag">PySpark</span>
+                      <span class="tag">Microsoft Fabric</span>
+                      <span class="tag">Power BI</span>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div class="project-footer">
+              <div class="status">
+                <span class="dot dot-wip" aria-hidden="true"></span>
+                <span>Statut : en préparation</span>
+              </div>
+              <div class="project-links">
+                <span class="btn btn-off btn-sm" aria-disabled="true" title="Le dépôt sera publié prochainement">Code bientôt disponible</span>
+                <a class="btn btn-primary btn-sm" href="projets/analyse-des-vols.html">Lire l'article</a>
+              </div>
+            </div>
+          </article>
 
           <article class="project rv">
             <div class="project-body">
