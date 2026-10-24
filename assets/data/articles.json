@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-10-24",
+    "tag": "Marché",
+    "titre": "Data Engineering en 2026 : SQL, Python, cloud… et le poids de l'expérience",
+    "texte": "Analyse technique de 100 offres de Data Engineer en CDI : compétences les plus citées, place du cloud, missions, expérience demandée et salaires annoncés.",
+    "lien": "articles/data-engineering-2026-offres.html"
+  },
+{
+    "date": "2026-10-24",
     "tag": "Fabric",
     "titre": "Interroger des données en continu avec KQL dans Microsoft Fabric",
     "texte": "Le langage des données temps réel de Fabric : filtrer, agréger par tranches de temps, tracer une courbe et repérer des anomalies sur des mesures de capteurs, avec les équivalences SQL.",

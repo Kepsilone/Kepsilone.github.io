@@ -41,6 +41,9 @@
   margin-bottom: 22px;
 }
 
+.byline { color: var(--ink); font-weight: 700; }
+.byline:hover { color: var(--accent); }
+
 .article-note {
   margin: 0 0 32px;
   padding: 14px 18px;
@@ -89,6 +92,40 @@
   font: 14px/1.6 ui-monospace, Consolas, Menlo, monospace;
 }
 .article pre code { padding: 0; background: none; font-size: inherit; color: inherit; }
+
+/* Graphiques */
+.chart { margin: 18px 0 20px; padding: 20px 22px 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+.chart-title { margin: 0 0 14px; font: 600 16px var(--sans); color: var(--ink); }
+.chart figcaption { margin-top: 12px; font-size: 13px; color: var(--ink-3); }
+.bars { display: flex; flex-direction: column; gap: 6px; }
+.bar-row { display: grid; grid-template-columns: minmax(120px, 38%) 1fr; align-items: center; gap: 12px; padding: 3px 4px; border-radius: 8px; outline: none; }
+.bar-row:hover, .bar-row:focus-visible { background: var(--bg-alt); }
+.bar-label { font-size: 14px; color: var(--ink-2); line-height: 1.3; }
+.bar-track { position: relative; display: flex; align-items: center; height: 22px; }
+.bar-fill { height: 14px; min-width: 2px; background: var(--accent); border-radius: 0 4px 4px 0; }
+.bar-value { margin-left: 8px; font-size: 13px; font-weight: 700; color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.donut { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.donut-svg { width: 200px; height: 200px; flex: none; }
+.donut-seg { fill: none; stroke-width: 26; cursor: pointer; outline: none; transition: stroke-width .15s; }
+.donut-seg:hover, .donut-seg:focus-visible { stroke-width: 32; }
+.donut-big { font: 700 30px var(--sans); fill: var(--ink); text-anchor: middle; }
+.donut-small { font: 500 11px var(--sans); fill: var(--ink-3); text-anchor: middle; }
+.donut-legend { flex: 1 1 220px; margin: 0; padding: 0 !important; list-style: none; }
+.donut-legend li { display: grid; grid-template-columns: 12px 1fr auto; align-items: center; gap: 10px; margin: 0 0 8px; font-size: 14px; color: var(--ink-2); }
+.donut-legend .sw { width: 12px; height: 12px; border-radius: 3px; }
+.donut-legend .lg-val { font-weight: 700; font-variant-numeric: tabular-nums; }
+.chart-data { margin-top: 12px; font-size: 14px; }
+.chart-data summary { cursor: pointer; color: var(--accent); font-weight: 700; font-size: 13px; }
+.chart-data table { width: 100%; margin-top: 10px; border-collapse: collapse; }
+.chart-data th, .chart-data td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; color: var(--ink-2); }
+.chart-data .num { text-align: right; font-variant-numeric: tabular-nums; }
+.chart-tip { position: fixed; z-index: 70; padding: 6px 10px; border-radius: 8px; background: var(--ink); color: #FBF6EF; font: 600 13px var(--sans); pointer-events: none; opacity: 0; transform: translate(-50%, calc(-100% - 12px)); transition: opacity .12s; white-space: nowrap; }
+.chart-tip.on { opacity: 1; }
+@media (max-width: 720px) {
+  .chart { padding: 16px 14px 12px; }
+  .bar-row { grid-template-columns: 1fr; gap: 2px; }
+  .donut { justify-content: center; }
+}
 
 /* Étapes numérotées */
 .steps { list-style: none; padding: 0 !important; counter-reset: st; }
