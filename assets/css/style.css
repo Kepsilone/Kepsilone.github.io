@@ -749,10 +749,9 @@ main {
 .sk-strong { color: var(--ink-2); font-weight: 700; }
 .sk-group { margin: 8px 0 16px; font: 700 13px var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
 .sk-grid + .sk-group { margin-top: 40px; }
+.skills h2 + .sk-grid { margin-top: 4px; }
 .sk-group-text { margin: -8px 0 16px; font-size: 15px; color: var(--ink-3); }
-.sk-grid-soft { grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
-.sk-soft { border-style: dashed; box-shadow: none; background: transparent; }
-.sk-soft h3 { margin-bottom: 12px; font-size: 18px; }
+.sk-grid-four { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
 .sk-card .cert-st { margin-left: 0; }
 @media (max-width: 720px) { .sk-card { padding: 20px; } }
 .skill h3 em { display: inline-block; margin-left: 6px; font: 500 12px var(--sans); font-style: normal; color: var(--ink-3); letter-spacing: .04em; text-transform: uppercase; }
