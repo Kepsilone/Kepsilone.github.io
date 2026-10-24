@@ -10,7 +10,9 @@ Le site présente mes compétences, mon parcours et mes projets techniques. Chaq
 
 ## Projets
 
-Les projets sont en cours de préparation et seront publiés au fur et à mesure, chacun avec son code et sa documentation.
+| Projet | Sujet | Stack | Statut |
+|---|---|---|---|
+| [Analyse des vols](https://kepsilone.github.io/projets/analyse-des-vols.html) | Flight Data Monitoring sur des enregistrements de vol réels publiés par la NASA | Python, PySpark, Parquet, DuckDB, Power BI | En préparation |
 
 ## Articles
 

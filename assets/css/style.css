@@ -756,6 +756,9 @@ main {
 @media (max-width: 720px) { .sk-card { padding: 20px; } }
 .skill h3 em { display: inline-block; margin-left: 6px; font: 500 12px var(--sans); font-style: normal; color: var(--ink-3); letter-spacing: .04em; text-transform: uppercase; }
 
+/* Projets */
+.case-wrap { max-width: 760px; grid-template-columns: 1fr; }
+.case-note { margin: 20px 0 0; font-size: 15px; color: var(--ink-3); }
 /* Projets : en chantier */
 .section-intro.projects-soon { padding-bottom: 64px; }
 .soon-card { max-width: 760px; margin-top: 8px; padding: 26px 28px; border: 1px dashed #D2BC9C; border-radius: var(--radius); background: var(--card); }

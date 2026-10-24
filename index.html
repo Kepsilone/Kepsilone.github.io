@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add("js")</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=13">
+  <link rel="stylesheet" href="assets/css/style.css?v=14">
 </head>
 <body>
   <a class="skip" href="#top">Aller au contenu</a>
@@ -64,7 +64,7 @@
       <section class="hero">
         <div class="hero-content">
           <h1 class="hero-title rv" style="--d:100ms">Sabeur JEDID</h1>
-          <p class="hero-text rv" style="--d:200ms">Data Engineering, intelligence artificielle, automatisation des workflows et des agents IA.</p>
+          <p class="hero-text rv" style="--d:200ms">Data Engineering · Python · SQL · Traitement et valorisation des données</p>
           <p class="hero-avail rv" style="--d:250ms"><span class="dot" aria-hidden="true"></span>Recherche une POEI ou un contrat de professionnalisation en Data Engineering · Île-de-France</p>
           <div class="hero-meta rv" style="--d:300ms">
             <span class="hero-badge">Python</span>
@@ -86,18 +86,55 @@
       <section class="about" id="apropos">
         <h2 class="rv">À propos</h2>
         <div class="about-text rv" style="--d:80ms">
-          <p>Je suis Sabeur JEDID. À travers ce portfolio, je partage mes projets, et mon apprentissage autour du Data Engineering, de l’intelligence artificielle, de l’automatisation des workflows et des agents IA.</p>
-          <p>Je m'intéresse à la conception de solutions concrètes, de la collecte et du traitement des données jusqu'à leur analyse et leur exploitation.</p>
-          <p>Ce portfolio évolue au rythme de mon apprentissage, de mes découvertes et des projets que je développe.</p>
+          <p>Je suis Sabeur JEDID, ingénieur de formation en mécanique des matériaux et en modélisation numérique. J'ai travaillé huit ans dans la fabrication additive métallique, avec une place croissante pour les données.</p>
+          <p>J'y ai structuré et historisé des logs machines par fabrication, développé des scripts Python pour automatiser leur traitement et leur visualisation, et mené des analyses statistiques (ACP, clustering, ANOVA, plans d'expériences) pour repérer dérives et valeurs aberrantes, et relier procédé, matériau et simulations.</p>
+          <p>Je me forme aujourd'hui aux outils du Data Engineering pour passer de l'analyse ponctuelle à des chaînes de traitement fiables, automatisées et reproductibles.</p>
         </div>
       </section>
 
       <section class="section-intro projects-soon" id="projects-index">
         <h2 class="rv">Projets</h2>
-        <div class="soon-card rv" style="--d:80ms">
-          <p class="soon-title">Les pipelines sont en chantier.</p>
-          <p class="soon-text">Les données circulent, les tests passent presque tous au vert et le café coule à flot. Les projets arrivent très bientôt, documentés de l'objectif aux résultats.</p>
+        <p class="section-text rv">Projet en cours de réalisation, documenté de l'objectif aux résultats.</p>
+        <div class="projects case-wrap">
+          <article class="project rv">
+            <div class="project-body">
+              <div class="project-topline">
+                <span class="project-label">Données de vol</span>
+              </div>
+              <h3>Analyse des vols (Flight Data Monitoring)</h3>
+              <p class="project-desc">
+                Pipeline de traitement d'enregistrements de vol réels publiés par la NASA : découpage
+                en phases de vol et détection des dépassements de limites, comme l'analyse menée
+                après chaque vol en compagnie aérienne.
+              </p>
+              <dl class="facts">
+                <div>
+                  <dt>Technologies envisagées</dt>
+                  <dd>
+                    <div class="tags">
+                      <span class="tag">Python</span>
+                      <span class="tag">PySpark</span>
+                      <span class="tag">Parquet</span>
+                      <span class="tag">DuckDB</span>
+                      <span class="tag">Power BI</span>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div class="project-footer">
+              <div class="status">
+                <span class="dot dot-wip" aria-hidden="true"></span>
+                <span>Statut : en préparation</span>
+              </div>
+              <div class="project-links">
+                <span class="btn btn-off btn-sm" aria-disabled="true" title="Le dépôt sera publié prochainement">Code bientôt disponible</span>
+                <a class="btn btn-primary btn-sm" href="projets/analyse-des-vols.html">Lire l'article</a>
+              </div>
+            </div>
+          </article>
         </div>
+        <p class="case-note rv">D'autres projets sont en préparation et seront publiés avec leur code et leur documentation.</p>
       </section>
 
       <section class="learn" id="articles">
@@ -127,8 +164,8 @@
           </li>
           <li class="tl rv" style="--d:160ms">
             <span class="tl-date">Expérience</span>
-            <h3>Ingénierie des procédés <span class="tl-year">2018 – 2026</span></h3>
-            <p>J’ai travaillé au développement et à l’optimisation de procédés industriels, en associant expérimentation, simulation numérique et analyse de données.</p>
+            <h3>Ingénieur fabrication additive, simulation et données <span class="tl-year">2018 – 2026</span></h3>
+            <p>Structuration et exploitation de logs de fabrication, scripts Python d'automatisation du traitement et de la visualisation, analyses statistiques des paramètres machine, calibration de modèles de simulation et comparaison simulation / essais.</p>
           </li>
         </ol>
       </section>

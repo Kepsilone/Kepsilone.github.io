@@ -6,13 +6,18 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://kepsilone.github.io/projets/analyse-des-vols.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://kepsilone.github.io/articles/kql-fabric.html</loc>
     <lastmod>2026-10-24</lastmod>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kepsilone.github.io/articles/linux-data-engineering.html</loc>
     <lastmod>2026-10-24</lastmod>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>
