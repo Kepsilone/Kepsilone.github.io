@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les commandes Linux utiles en Data Engineering — Sabeur JEDID</title>
+  <meta name="description" content="Les commandes Linux que j'utilise pour explorer des fichiers de données, filtrer des logs, transférer des fichiers et planifier des traitements. Article de Sabeur JEDID.">
+  <meta name="author" content="Sabeur JEDID">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="canonical" href="https://kepsilone.github.io/articles/linux-data-engineering.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sabeur JEDID">
+  <meta property="og:title" content="Les commandes Linux utiles en Data Engineering">
+  <meta property="og:description" content="Explorer des fichiers, filtrer des logs, transférer et planifier : les commandes Linux du quotidien d'un data engineer.">
+  <meta property="og:url" content="https://kepsilone.github.io/articles/linux-data-engineering.html">
+  <meta property="og:image" content="https://kepsilone.github.io/assets/img/photo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=12">
+  <link rel="stylesheet" href="../assets/css/article.css?v=3">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="site-header">
+      <a href="../index.html" class="brand" aria-label="Sabeur JEDID, accueil">
+        <img src="../assets/img/logo.png?v=2" alt="Kepsilone · Data Engineering" class="brand-logo" width="400" height="117">
+      </a>
+      <nav class="toplinks" aria-label="Liens principaux">
+        <a href="../index.html#articles">Articles</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="pill-link" href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main class="article">
+      <a class="crumb" href="../index.html#articles">← Retour aux articles</a>
+
+      <div class="article-head">
+        <span class="project-label">Linux</span>
+        <h1>Les commandes Linux utiles en Data Engineering</h1>
+        <p class="lead">Les pipelines de données tournent presque tous sur des serveurs Linux. Avant d'ouvrir Python ou Spark, quelques commandes suffisent souvent pour comprendre un fichier, retrouver une erreur ou automatiser un traitement.</p>
+        <div class="article-meta">
+          <div class="status"><span>24 octobre 2026 · lecture 4 min</span></div>
+        </div>
+      </div>
+
+      <section>
+        <h2>1. Explorer un fichier sans l'ouvrir</h2>
+        <p>Un fichier CSV de plusieurs gigaoctets ne s'ouvre pas dans un tableur. Ces commandes lisent seulement ce qu'il faut.</p>
+<pre><code>head -n 5 ventes.csv        # les 5 premières lignes (et l'en-tête)
+tail -n 5 ventes.csv        # les 5 dernières
+wc -l ventes.csv            # le nombre de lignes
+du -sh data/                # la taille d'un dossier
+less ventes.csv             # parcourir le fichier page par page</code></pre>
+        <p>Un réflexe utile : comparer <code>wc -l</code> sur le fichier source et sur le fichier chargé, pour vérifier qu'aucune ligne n'a été perdue en route.</p>
+      </section>
+
+      <section>
+        <h2>2. Filtrer et compter</h2>
+        <p>Les commandes se combinent avec le symbole <code>|</code> (le <em>pipe</em>) : la sortie de l'une devient l'entrée de la suivante.</p>
+<pre><code>grep "ERROR" pipeline.log                  # les lignes qui contiennent ERROR
+grep -c "ERROR" pipeline.log               # combien il y en a
+cut -d',' -f3 ventes.csv | sort | uniq -c  # nombre de lignes par valeur de la 3e colonne
+awk -F',' '$4 > 1000' ventes.csv           # les lignes dont la 4e colonne dépasse 1000</code></pre>
+        <p>La troisième ligne est un vrai petit contrôle qualité : elle montre en une seconde si une colonne contient des valeurs inattendues.</p>
+      </section>
+
+      <section>
+        <h2>3. Suivre un traitement en direct</h2>
+<pre><code>tail -f pipeline.log        # afficher les nouvelles lignes au fil de l'eau
+ps aux | grep python        # retrouver un script en cours d'exécution
+top                         # voir la mémoire et le processeur utilisés
+nohup python job.py &amp;       # lancer un script qui continue après la déconnexion</code></pre>
+      </section>
+
+      <section>
+        <h2>4. Récupérer et déplacer des données</h2>
+<pre><code>curl -O https://exemple.org/donnees.csv     # télécharger un fichier
+gzip donnees.csv                            # compresser
+zcat donnees.csv.gz | head                  # lire un fichier compressé sans le décompresser
+rsync -av data/ serveur:/backup/data/       # copier en ne transférant que ce qui a changé</code></pre>
+      </section>
+
+      <section>
+        <h2>5. Planifier un traitement</h2>
+        <p>Avant les orchestrateurs comme Airflow, il y a <strong>cron</strong>, qui lance une commande à heure fixe. Une ligne dans <code>crontab -e</code> suffit :</p>
+<pre><code># tous les jours à 6 h, lancer l'ingestion et garder la trace dans un log
+0 6 * * * python /opt/pipeline/ingestion.py &gt;&gt; /var/log/ingestion.log 2&gt;&amp;1</code></pre>
+        <p>cron ne gère ni les dépendances entre tâches, ni les relances en cas d'échec : c'est précisément ce qu'apportent les orchestrateurs.</p>
+      </section>
+
+      <div class="article-actions">
+        <a class="btn btn-ghost" href="../index.html#articles">Tous les articles</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-left">
+        <p class="footer-name">Sabeur JEDID</p>
+        <p class="footer-copy">© 2026 · Kepsilone · Data Engineering</p>
+      </div>
+      <nav class="footer-right" aria-label="Contact">
+        <a href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -46,10 +46,10 @@
   onScroll();
   up.addEventListener('click', function () { scrollTo({ top: 0, behavior: still ? 'auto' : 'smooth' }); });
 
-  /* Rubrique Apprentissage : billets lus dans assets/data/apprentissage.json */
+  /* Rubrique Articles : liste lue dans assets/data/articles.json */
   var learn = $('#learn-list');
   if (learn && window.fetch) {
-    fetch('assets/data/apprentissage.json', { cache: 'no-cache' })
+    fetch('assets/data/articles.json', { cache: 'no-cache' })
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (items) {
         if (!Array.isArray(items) || !items.length) return;
@@ -77,29 +77,68 @@
             var a = document.createElement('a');
             a.className = 'learn-link';
             a.href = it.lien;
-            a.target = '_blank';
-            a.rel = 'noopener';
-            a.textContent = 'Lire la suite ↗';
+            if (/^https?:/.test(it.lien)) {
+              a.target = '_blank';
+              a.rel = 'noopener';
+              a.textContent = 'Lire la suite ↗';
+            } else {
+              a.textContent = "Lire l'article →";
+            }
             el.appendChild(a);
           }
           return el;
         }
-        items.forEach(function (it, i) {
+        var cards = items.map(function (it) {
           var el = card(it);
-          if (i >= shown) el.hidden = true;
+          el.dataset.tag = it.tag || '';
           learn.appendChild(el);
+          return el;
         });
-        if (items.length > shown) {
-          var more = document.createElement('button');
-          more.type = 'button';
-          more.className = 'btn btn-ghost btn-sm learn-more';
-          more.textContent = 'Voir les billets précédents';
-          more.addEventListener('click', function () {
-            $$('.learn-item[hidden]', learn).forEach(function (el) { el.hidden = false; });
-            more.remove();
+
+        /* Bouton « voir plus » quand tous les thèmes sont affichés */
+        var more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'btn btn-ghost btn-sm learn-more';
+        more.textContent = 'Voir les articles précédents';
+        learn.parentNode.appendChild(more);
+        var expanded = false;
+        more.addEventListener('click', function () { expanded = true; apply(current); });
+
+        /* Filtres par thème */
+        var current = '';
+        var tags = [];
+        items.forEach(function (it) { if (it.tag && tags.indexOf(it.tag) < 0) tags.push(it.tag); });
+        var bar = $('#learn-filters');
+        function chip(label, tag) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'learn-chip';
+          b.textContent = label;
+          b.setAttribute('aria-pressed', tag === current ? 'true' : 'false');
+          b.addEventListener('click', function () {
+            current = tag;
+            $$('.learn-chip', bar).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+            apply(tag);
           });
-          learn.parentNode.appendChild(more);
+          bar.appendChild(b);
         }
+        function apply(tag) {
+          var shownCount = 0, total = 0;
+          cards.forEach(function (c) {
+            var match = !tag || c.dataset.tag === tag;
+            if (match) total++;
+            var visible = match && (tag || expanded || shownCount < shown);
+            if (visible) shownCount++;
+            c.hidden = !visible;
+          });
+          more.hidden = !!tag || expanded || total <= shown;
+        }
+        if (tags.length > 1) {
+          chip('Tous', '');
+          tags.forEach(function (t) { chip(t, t); });
+          bar.hidden = false;
+        }
+        apply('');
       })
       .catch(function () {});
   }

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interroger des données en continu avec KQL dans Microsoft Fabric — Sabeur JEDID</title>
+  <meta name="description" content="Les bases du langage KQL dans Microsoft Fabric : filtrer, agréger par tranches de temps, tracer une courbe et repérer des anomalies sur des données de capteurs. Article de Sabeur JEDID.">
+  <meta name="author" content="Sabeur JEDID">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="canonical" href="https://kepsilone.github.io/articles/kql-fabric.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sabeur JEDID">
+  <meta property="og:title" content="Interroger des données en continu avec KQL dans Microsoft Fabric">
+  <meta property="og:description" content="Filtrer, agréger par tranches de temps et repérer des anomalies avec KQL dans Fabric.">
+  <meta property="og:url" content="https://kepsilone.github.io/articles/kql-fabric.html">
+  <meta property="og:image" content="https://kepsilone.github.io/assets/img/photo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=12">
+  <link rel="stylesheet" href="../assets/css/article.css?v=3">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="site-header">
+      <a href="../index.html" class="brand" aria-label="Sabeur JEDID, accueil">
+        <img src="../assets/img/logo.png?v=2" alt="Kepsilone · Data Engineering" class="brand-logo" width="400" height="117">
+      </a>
+      <nav class="toplinks" aria-label="Liens principaux">
+        <a href="../index.html#articles">Articles</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="pill-link" href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main class="article">
+      <a class="crumb" href="../index.html#articles">← Retour aux articles</a>
+
+      <div class="article-head">
+        <span class="project-label">Fabric · KQL</span>
+        <h1>Interroger des données en continu avec KQL dans Microsoft Fabric</h1>
+        <p class="lead">KQL (Kusto Query Language) est le langage de requête des données temps réel dans Microsoft Fabric. Il est conçu pour les journaux, la télémétrie et les mesures de capteurs : des millions de lignes horodatées qu'on veut filtrer et agréger en quelques secondes.</p>
+        <div class="article-meta">
+          <div class="status"><span>24 octobre 2026 · lecture 5 min</span></div>
+        </div>
+      </div>
+
+      <section>
+        <h2>Où se trouve KQL dans Fabric</h2>
+        <p>KQL fait partie de l'expérience <strong>Real-Time Intelligence</strong> de Fabric :</p>
+        <ul>
+          <li>un <strong>Eventstream</strong> reçoit les événements en continu et les envoie vers une base ;</li>
+          <li>un <strong>Eventhouse</strong> contient une ou plusieurs <strong>bases KQL</strong>, optimisées pour les données horodatées ;</li>
+          <li>un <strong>KQL Queryset</strong> sert à écrire et enregistrer les requêtes ;</li>
+          <li>un <strong>Real-Time Dashboard</strong> affiche les résultats en direct.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Une syntaxe en pipeline</h2>
+        <p>Une requête KQL part d'une table, puis enchaîne des opérations séparées par <code>|</code>, comme les commandes Linux. Chaque étape reçoit le résultat de la précédente. Les exemples suivants utilisent une table <code>Mesures</code> de capteurs industriels, avec les colonnes <code>Timestamp</code>, <code>Machine</code>, <code>Capteur</code> et <code>Valeur</code>.</p>
+<pre><code>Mesures
+| where Timestamp &gt; ago(1h)           // la dernière heure
+| where Machine == "M01"              // une seule machine
+| project Timestamp, Capteur, Valeur  // les colonnes utiles
+| take 10                             // un aperçu de 10 lignes</code></pre>
+      </section>
+
+      <section>
+        <h2>Agréger</h2>
+        <p><code>summarize</code> joue le rôle du <code>GROUP BY</code> en SQL :</p>
+<pre><code>Mesures
+| where Timestamp &gt; ago(1d)
+| summarize Moyenne = avg(Valeur), Maximum = max(Valeur), Nombre = count() by Machine
+| order by Maximum desc</code></pre>
+      </section>
+
+      <section>
+        <h2>Découper le temps et tracer une courbe</h2>
+        <p>La fonction <code>bin()</code> regroupe les mesures par tranches de temps, ici 5 minutes, et <code>render</code> affiche directement le graphique :</p>
+<pre><code>Mesures
+| where Timestamp &gt; ago(1d) and Capteur == "Temperature"
+| summarize Moyenne = avg(Valeur) by bin(Timestamp, 5m), Machine
+| render timechart</code></pre>
+      </section>
+
+      <section>
+        <h2>Repérer des anomalies</h2>
+        <p>KQL sait construire des séries temporelles et y chercher des valeurs anormales, sans écrire de modèle :</p>
+<pre><code>Mesures
+| where Capteur == "Temperature"
+| make-series Moyenne = avg(Valeur) default = 0
+    on Timestamp from ago(1d) to now() step 5m by Machine
+| extend Anomalies = series_decompose_anomalies(Moyenne)
+| render anomalychart with (anomalycolumns = Anomalies)</code></pre>
+        <p><code>series_decompose_anomalies</code> sépare la tendance et la saisonnalité de la série, puis signale les points qui s'en écartent trop.</p>
+      </section>
+
+      <section>
+        <h2>Les équivalences avec SQL</h2>
+        <ul>
+          <li><code>SELECT colonnes</code> → <code>project</code></li>
+          <li><code>WHERE</code> → <code>where</code></li>
+          <li><code>GROUP BY</code> → <code>summarize … by</code></li>
+          <li><code>ORDER BY</code> → <code>order by</code> (ou <code>sort by</code>)</li>
+          <li><code>LIMIT</code> / <code>TOP</code> → <code>take</code> / <code>top</code></li>
+          <li>colonne calculée → <code>extend</code></li>
+        </ul>
+        <p>La différence principale : en KQL, on lit la requête dans l'ordre où elle s'exécute, de haut en bas.</p>
+      </section>
+
+      <div class="article-actions">
+        <a class="btn btn-ghost" href="../index.html#articles">Tous les articles</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-left">
+        <p class="footer-name">Sabeur JEDID</p>
+        <p class="footer-copy">© 2026 · Kepsilone · Data Engineering</p>
+      </div>
+      <nav class="footer-right" aria-label="Contact">
+        <a href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </footer>
+
+  </div>
+</body>
+</html>

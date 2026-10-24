@@ -12,9 +12,9 @@ Le site présente mes compétences, mon parcours et mes projets techniques. Chaq
 
 Les projets sont en cours de préparation et seront publiés au fur et à mesure, chacun avec son code et sa documentation.
 
-## Apprentissage
+## Articles
 
-La rubrique Apprentissage du site partage au fil des jours une notion apprise, un article lu ou une expérience.
+La rubrique Articles du site publie des articles courts sur le Data Engineering : une notion, un outil ou une méthode, expliqués avec des exemples concrets.
 
 ## Comment le site est construit
 
@@ -25,7 +25,8 @@ La rubrique Apprentissage du site partage au fil des jours une notion apprise, u
 
 ```
 ├── index.html              Page d'accueil
-├── assets/data/apprentissage.json   Billets de la rubrique Apprentissage
+├── articles/               Une page par article
+├── assets/data/articles.json   Liste des articles affichés sur la page
 ├── assets/
 │   ├── css/style.css       Styles du site
 │   ├── css/article.css     Styles des pages article
