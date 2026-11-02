@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte SQL 01 : SQL : les fondamentaux — Sabeur JEDID</title>
+  <meta name="description" content="Carte SQL niveau 01 : les fondamentaux en six étapes simples, du plus facile au plus difficile. Par Sabeur JEDID.">
+  <meta name="author" content="Sabeur JEDID">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="canonical" href="https://kepsilone.github.io/apprentissage/carte-sql-01.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sabeur JEDID">
+  <meta property="og:title" content="Carte SQL 01 : SQL : les fondamentaux">
+  <meta property="og:description" content="Les fondamentaux du SQL en six étapes simples.">
+  <meta property="og:url" content="https://kepsilone.github.io/apprentissage/carte-sql-01.html">
+  <meta property="og:image" content="https://kepsilone.github.io/assets/img/photo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=16">
+  <link rel="stylesheet" href="../assets/css/article.css?v=6">
+  <link rel="stylesheet" href="../assets/css/carte.css?v=7">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="site-header">
+      <a href="../index.html" class="brand" aria-label="Sabeur JEDID, accueil">
+        <img src="../assets/img/logo.png?v=2" alt="Kepsilone · Data Engineering" class="brand-logo" width="400" height="117">
+      </a>
+      <nav class="toplinks" aria-label="Liens principaux">
+        <a href="../index.html#articles">Articles</a>
+        <a href="../index.html#apprentissage">Apprentissage</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="pill-link" href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main class="carte">
+      <a class="crumb" href="../index.html#apprentissage">← Retour à l'apprentissage</a>
+
+      <div class="carte-head">
+        <span class="carte-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13"/><path d="M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/></svg>
+        </span>
+        <span class="project-label">Carte SQL · niveau 01 sur 4 · PostgreSQL</span>
+        <h1>01 — SQL : les fondamentaux</h1>
+        <p class="carte-goal"><strong>Objectif :</strong> lire, filtrer, trier et modifier des données.</p>
+        <p class="carte-howto">Une étape à la fois : la question, les 2 ou 3 commandes à connaître, un exemple et un tips.</p>
+      </div>
+
+      <nav class="rail" aria-label="Parcours du plus facile au plus difficile">
+        <div class="rail-ends" aria-hidden="true"><span>Facile</span><span>Plus difficile</span></div>
+        <ol>
+          <li class="s1"><a href="#etape-1"><span class="rail-dot">1</span><span class="rail-label">Lire</span></a></li>
+          <li class="s2"><a href="#etape-2"><span class="rail-dot">2</span><span class="rail-label">Trier</span></a></li>
+          <li class="s3"><a href="#etape-3"><span class="rail-dot">3</span><span class="rail-label">Filtrer</span></a></li>
+          <li class="s4"><a href="#etape-4"><span class="rail-dot">4</span><span class="rail-label">Transformer</span></a></li>
+          <li class="s5"><a href="#etape-5"><span class="rail-dot">5</span><span class="rail-label">Modifier</span></a></li>
+          <li class="s6"><a href="#etape-6"><span class="rail-dot">6</span><span class="rail-label">Créer</span></a></li>
+        </ol>
+      </nav>
+
+      <div class="carte-steps">
+
+        <section class="step s1" id="etape-1" aria-labelledby="t1">
+          <div class="step-head">
+            <span class="step-num">1</span>
+            <div>
+              <h2 id="t1">Lire</h2>
+              <div class="level" aria-label="Difficulté : facile"><i class="on"></i><i></i><i></i> facile</div>
+            </div>
+          </div>
+          <p class="need">Je veux voir certaines colonnes d'une table.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>SELECT</code><span class="arrow" aria-hidden="true">→</span><span>choisir les colonnes</span></li>
+              <li><code>FROM</code><span class="arrow" aria-hidden="true">→</span><span>dire quelle table</span></li>
+              <li><code>DISTINCT</code><span class="arrow" aria-hidden="true">→</span><span>enlever les doublons</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT nom, pays
+FROM clients;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> <code>DISTINCT</code> porte sur toutes les colonnes choisies, pas sur une seule.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>SELECT *</code> <code>AS alias</code></div>
+          </details>
+        </section>
+
+        <section class="step s2" id="etape-2" aria-labelledby="t2">
+          <div class="step-head">
+            <span class="step-num">2</span>
+            <div>
+              <h2 id="t2">Trier</h2>
+              <div class="level" aria-label="Difficulté : facile"><i class="on"></i><i></i><i></i> facile</div>
+            </div>
+          </div>
+          <p class="need">Je veux classer les lignes et n'en garder que quelques-unes.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>ORDER BY … DESC</code><span class="arrow" aria-hidden="true">→</span><span>trier, du plus grand au plus petit</span></li>
+              <li><code>LIMIT 3</code><span class="arrow" aria-hidden="true">→</span><span>garder 3 lignes</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT nom, score
+FROM clients
+ORDER BY score DESC
+LIMIT 3;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> en <code>DESC</code>, les <code>NULL</code> arrivent en premier. Ajoutez <code>NULLS LAST</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>ASC</code> <code>NULLS LAST</code> <code>OFFSET</code></div>
+          </details>
+        </section>
+
+        <section class="step s3" id="etape-3" aria-labelledby="t3">
+          <div class="step-head">
+            <span class="step-num">3</span>
+            <div>
+              <h2 id="t3">Filtrer</h2>
+              <div class="level" aria-label="Difficulté : moyenne"><i class="on"></i><i class="on"></i><i></i> moyen</div>
+            </div>
+          </div>
+          <p class="need">Je veux garder seulement les lignes qui m'intéressent.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>WHERE</code><span class="arrow" aria-hidden="true">→</span><span>poser une condition</span></li>
+              <li><code>= &lt;&gt; &gt; &lt;</code><span class="arrow" aria-hidden="true">→</span><span>comparer</span></li>
+              <li><code>AND / OR</code><span class="arrow" aria-hidden="true">→</span><span>combiner</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT *
+FROM clients
+WHERE pays = 'France'
+  AND score &gt; 400;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> <code>= NULL</code> ne marche jamais. Écrivez <code>IS NULL</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>IN (…)</code> <code>BETWEEN</code> <code>LIKE 'A%'</code> <code>ILIKE</code> <code>IS NULL</code> <code>NOT</code></div>
+          </details>
+        </section>
+
+        <section class="step s4" id="etape-4" aria-labelledby="t4">
+          <div class="step-head">
+            <span class="step-num">4</span>
+            <div>
+              <h2 id="t4">Transformer</h2>
+              <div class="level" aria-label="Difficulté : moyenne"><i class="on"></i><i class="on"></i><i></i> moyen</div>
+            </div>
+          </div>
+          <p class="need">Je veux calculer ou nettoyer une valeur.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>+ - * /</code><span class="arrow" aria-hidden="true">→</span><span>calculer (nombres)</span></li>
+              <li><code>UPPER / TRIM</code><span class="arrow" aria-hidden="true">→</span><span>nettoyer (texte)</span></li>
+              <li><code>COALESCE</code><span class="arrow" aria-hidden="true">→</span><span>remplacer un NULL</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT UPPER(nom),
+       score * 1.1
+FROM clients;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> entre deux entiers, <code>5 / 2</code> donne <code>2</code>. Écrivez <code>5 / 2.0</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>LOWER</code> <code>LENGTH</code> <code>||</code> <code>ROUND</code> <code>CASE WHEN</code> <code>::TEXT</code> <code>::INTEGER</code></div>
+          </details>
+        </section>
+
+        <section class="step s5" id="etape-5" aria-labelledby="t5">
+          <div class="step-head">
+            <span class="step-num">5</span>
+            <div>
+              <h2 id="t5">Modifier</h2>
+              <div class="level" aria-label="Difficulté : avancée"><i class="on"></i><i class="on"></i><i class="on"></i> avancé</div>
+            </div>
+          </div>
+          <p class="need">Je veux ajouter, changer ou supprimer des lignes.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>INSERT INTO</code><span class="arrow" aria-hidden="true">→</span><span>ajouter</span></li>
+              <li><code>UPDATE … SET</code><span class="arrow" aria-hidden="true">→</span><span>modifier</span></li>
+              <li><code>DELETE FROM</code><span class="arrow" aria-hidden="true">→</span><span>supprimer</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>UPDATE clients
+SET score = 450
+WHERE id = 3;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> sans <code>WHERE</code>, toutes les lignes sont touchées. Testez d'abord avec un <code>SELECT</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>VALUES</code> <code>WHERE id = …</code></div>
+          </details>
+        </section>
+
+        <section class="step s6" id="etape-6" aria-labelledby="t6">
+          <div class="step-head">
+            <span class="step-num">6</span>
+            <div>
+              <h2 id="t6">Créer</h2>
+              <div class="level" aria-label="Difficulté : avancée"><i class="on"></i><i class="on"></i><i class="on"></i> avancé</div>
+            </div>
+          </div>
+          <p class="need">Je veux créer une table propre.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>CREATE TABLE</code><span class="arrow" aria-hidden="true">→</span><span>créer la table</span></li>
+              <li><code>INTEGER / TEXT</code><span class="arrow" aria-hidden="true">→</span><span>choisir le type</span></li>
+              <li><code>PRIMARY KEY</code><span class="arrow" aria-hidden="true">→</span><span>identifiant unique</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>CREATE TABLE clients (
+  id INTEGER PRIMARY KEY,
+  nom TEXT NOT NULL
+);</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> un code postal reste du <code>TEXT</code>, sinon <code>'01000'</code> devient <code>1000</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>NUMERIC</code> <code>DATE</code> <code>BOOLEAN</code> <code>NOT NULL</code> <code>UNIQUE</code> <code>DEFAULT</code> <code>CHECK</code> <code>ALTER TABLE</code> <code>DROP TABLE</code></div>
+          </details>
+        </section>
+      </div>
+
+      <p class="carte-note"><strong>Ordre d'écriture :</strong> <code>SELECT → FROM → WHERE → ORDER BY → LIMIT</code><br><strong>Ordre d'exécution :</strong> <code>FROM → WHERE → SELECT → DISTINCT → ORDER BY → LIMIT</code></p>
+
+      <div class="carte-actions">
+        <a class="btn btn-ghost" href="memento-sql.html">Mémento SQL</a>
+        <a class="btn btn-primary" href="carte-sql-02.html">Carte 02 →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-left">
+        <p class="footer-name">Sabeur JEDID</p>
+        <p class="footer-copy">© 2026 · Kepsilone · Data Engineering</p>
+      </div>
+      <nav class="footer-right" aria-label="Contact">
+        <a href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </footer>
+
+  </div>
+</body>
+</html>

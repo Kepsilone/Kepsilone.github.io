@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte SQL 04 : SQL et Data Engineering — Sabeur JEDID</title>
+  <meta name="description" content="Carte SQL niveau 04 : couches, ingestion, contrôle, dédoublonnage, MERGE, incrémental et historique en six étapes simples. Par Sabeur JEDID.">
+  <meta name="author" content="Sabeur JEDID">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="canonical" href="https://kepsilone.github.io/apprentissage/carte-sql-04.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sabeur JEDID">
+  <meta property="og:title" content="Carte SQL 04 : SQL et Data Engineering">
+  <meta property="og:description" content="Le SQL du Data Engineer en six étapes simples.">
+  <meta property="og:url" content="https://kepsilone.github.io/apprentissage/carte-sql-04.html">
+  <meta property="og:image" content="https://kepsilone.github.io/assets/img/photo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=16">
+  <link rel="stylesheet" href="../assets/css/article.css?v=6">
+  <link rel="stylesheet" href="../assets/css/carte.css?v=7">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="site-header">
+      <a href="../index.html" class="brand" aria-label="Sabeur JEDID, accueil">
+        <img src="../assets/img/logo.png?v=2" alt="Kepsilone · Data Engineering" class="brand-logo" width="400" height="117">
+      </a>
+      <nav class="toplinks" aria-label="Liens principaux">
+        <a href="../index.html#articles">Articles</a>
+        <a href="../index.html#apprentissage">Apprentissage</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="pill-link" href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main class="carte">
+      <a class="crumb" href="../index.html#apprentissage">← Retour à l'apprentissage</a>
+
+      <div class="carte-head">
+        <span class="carte-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13"/><path d="M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/></svg>
+        </span>
+        <span class="project-label">Carte SQL · niveau 04 sur 4 · PostgreSQL</span>
+        <h1>04 — SQL et Data Engineering</h1>
+        <p class="carte-goal"><strong>Objectif :</strong> construire un pipeline de données fiable et rejouable.</p>
+        <p class="carte-howto">Une étape à la fois : la question, les 2 ou 3 commandes à connaître, un exemple et un tips.</p>
+      </div>
+
+      <nav class="rail" aria-label="Parcours du plus facile au plus difficile">
+        <div class="rail-ends" aria-hidden="true"><span>Facile</span><span>Plus difficile</span></div>
+        <ol>
+          <li class="s1"><a href="#etape-1"><span class="rail-dot">1</span><span class="rail-label">Ranger</span></a></li>
+          <li class="s2"><a href="#etape-2"><span class="rail-dot">2</span><span class="rail-label">Ingérer</span></a></li>
+          <li class="s3"><a href="#etape-3"><span class="rail-dot">3</span><span class="rail-label">Contrôler</span></a></li>
+          <li class="s4"><a href="#etape-4"><span class="rail-dot">4</span><span class="rail-label">Dédoublonner</span></a></li>
+          <li class="s5"><a href="#etape-5"><span class="rail-dot">5</span><span class="rail-label">Charger</span></a></li>
+          <li class="s6"><a href="#etape-6"><span class="rail-dot">6</span><span class="rail-label">Suivre</span></a></li>
+        </ol>
+      </nav>
+
+      <div class="carte-steps">
+
+        <section class="step s1" id="etape-1" aria-labelledby="t1">
+          <div class="step-head">
+            <span class="step-num">1</span>
+            <div>
+              <h2 id="t1">Ranger en couches</h2>
+              <div class="level" aria-label="Difficulté : facile"><i class="on"></i><i></i><i></i> facile</div>
+            </div>
+          </div>
+          <p class="need">Je veux séparer les données brutes des données propres.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>raw</code><span class="arrow" aria-hidden="true">→</span><span>brut, tout en texte</span></li>
+              <li><code>staging</code><span class="arrow" aria-hidden="true">→</span><span>contrôlé et typé</span></li>
+              <li><code>marts</code><span class="arrow" aria-hidden="true">→</span><span>prêt pour l'analyse</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>CREATE SCHEMA raw;
+CREATE SCHEMA staging;
+CREATE SCHEMA marts;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> en raw, tout est en <code>TEXT</code> : un fichier mal formé ne bloque jamais l'ingestion.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>ops (journal)</code> <code>CREATE SCHEMA</code></div>
+          </details>
+        </section>
+
+        <section class="step s2" id="etape-2" aria-labelledby="t2">
+          <div class="step-head">
+            <span class="step-num">2</span>
+            <div>
+              <h2 id="t2">Ingérer</h2>
+              <div class="level" aria-label="Difficulté : facile"><i class="on"></i><i></i><i></i> facile</div>
+            </div>
+          </div>
+          <p class="need">Je veux charger un fichier CSV dans une table.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>\copy</code><span class="arrow" aria-hidden="true">→</span><span>fichier sur mon poste</span></li>
+              <li><code>COPY</code><span class="arrow" aria-hidden="true">→</span><span>fichier sur le serveur</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>\copy raw.ventes
+FROM 'ventes.csv'
+WITH (FORMAT csv, HEADER true)</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> ajoutez un <code>raw_id</code> : les lignes d'un même lot ont la même heure d'arrivée.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>IDENTITY</code> <code>ingested_at</code></div>
+          </details>
+        </section>
+
+        <section class="step s3" id="etape-3" aria-labelledby="t3">
+          <div class="step-head">
+            <span class="step-num">3</span>
+            <div>
+              <h2 id="t3">Contrôler</h2>
+              <div class="level" aria-label="Difficulté : moyenne"><i class="on"></i><i class="on"></i><i></i> moyen</div>
+            </div>
+          </div>
+          <p class="need">Je veux écarter les lignes invalides sans tout bloquer.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>IS NULL</code><span class="arrow" aria-hidden="true">→</span><span>valeur manquante</span></li>
+              <li><code>pg_input_is_valid</code><span class="arrow" aria-hidden="true">→</span><span>valeur convertible</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT * FROM raw.ventes
+WHERE montant IS NULL
+   OR NOT pg_input_is_valid(
+        montant, 'numeric');</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> une regex seule laisse passer les <code>NULL</code> : testez-les à part.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>quarantaine</code> <code>CASE … motif de rejet</code> <code>regex ~</code></div>
+          </details>
+        </section>
+
+        <section class="step s4" id="etape-4" aria-labelledby="t4">
+          <div class="step-head">
+            <span class="step-num">4</span>
+            <div>
+              <h2 id="t4">Dédoublonner</h2>
+              <div class="level" aria-label="Difficulté : moyenne"><i class="on"></i><i class="on"></i><i></i> moyen</div>
+            </div>
+          </div>
+          <p class="need">Je veux une seule ligne par événement.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>ROW_NUMBER() OVER</code><span class="arrow" aria-hidden="true">→</span><span>numéroter les doublons</span></li>
+              <li><code>WHERE rn = 1</code><span class="arrow" aria-hidden="true">→</span><span>garder le premier</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT * FROM (
+  SELECT *, ROW_NUMBER() OVER (
+    PARTITION BY event_id
+    ORDER BY raw_id DESC) AS rn
+  FROM raw.ventes) t
+WHERE rn = 1;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> la dernière ligne reçue n'est pas forcément la dernière version.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>ORDER BY version DESC</code> <code>::NUMERIC</code> <code>::DATE</code></div>
+          </details>
+        </section>
+
+        <section class="step s5" id="etape-5" aria-labelledby="t5">
+          <div class="step-head">
+            <span class="step-num">5</span>
+            <div>
+              <h2 id="t5">Charger</h2>
+              <div class="level" aria-label="Difficulté : avancée"><i class="on"></i><i class="on"></i><i class="on"></i> avancé</div>
+            </div>
+          </div>
+          <p class="need">Je veux insérer les nouvelles lignes et mettre à jour les anciennes.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>MERGE</code><span class="arrow" aria-hidden="true">→</span><span>insérer ou mettre à jour</span></li>
+              <li><code>RAISE EXCEPTION</code><span class="arrow" aria-hidden="true">→</span><span>tout arrêter si un contrôle échoue</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>MERGE INTO marts.ventes t
+USING staging.ventes s
+  ON t.id = s.id
+WHEN MATCHED THEN UPDATE
+  SET montant = s.montant
+WHEN NOT MATCHED THEN INSERT
+  VALUES (s.id, s.montant);</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> <code>MERGE</code> refuse une source qui contient deux fois la même clé.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>ON CONFLICT</code> <code>IS DISTINCT FROM</code> <code>idempotence</code></div>
+          </details>
+        </section>
+
+        <section class="step s6" id="etape-6" aria-labelledby="t6">
+          <div class="step-head">
+            <span class="step-num">6</span>
+            <div>
+              <h2 id="t6">Suivre dans le temps</h2>
+              <div class="level" aria-label="Difficulté : avancée"><i class="on"></i><i class="on"></i><i class="on"></i> avancé</div>
+            </div>
+          </div>
+          <p class="need">Je veux traiter seulement les nouveautés et garder l'historique.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>watermark</code><span class="arrow" aria-hidden="true">→</span><span>reprendre là où on s'est arrêté</span></li>
+              <li><code>SCD Type 2</code><span class="arrow" aria-hidden="true">→</span><span>garder les anciennes versions</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT * FROM raw.ventes
+WHERE raw_id &gt; (
+  SELECT MAX(to_raw_id)
+  FROM ops.pipeline_runs);</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> le watermark n'avance qu'après un succès.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>valid_from</code> <code>valid_to</code> <code>is_current</code> <code>CDC</code></div>
+          </details>
+        </section>
+      </div>
+
+      <p class="carte-note"><strong>Ordre d'un pipeline :</strong> <code>ingérer → contrôler → dédoublonner → charger → vérifier → journaliser</code><br><strong>Règle d'or :</strong> <code>relancer le pipeline deux fois doit donner le même résultat</code></p>
+
+      <div class="carte-actions">
+        <a class="btn btn-ghost" href="carte-sql-03.html">← Carte 03</a>
+        <a class="btn btn-ghost" href="memento-sql.html">Mémento SQL</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-left">
+        <p class="footer-name">Sabeur JEDID</p>
+        <p class="footer-copy">© 2026 · Kepsilone · Data Engineering</p>
+      </div>
+      <nav class="footer-right" aria-label="Contact">
+        <a href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </footer>
+
+  </div>
+</body>
+</html>

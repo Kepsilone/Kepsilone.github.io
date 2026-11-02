@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mémento SQL — Sabeur JEDID</title>
+  <meta name="description" content="Mémento SQL (PostgreSQL) en 18 fiches courtes, des bases aux fonctions de fenêtre : une question, les commandes essentielles, un exemple et un tips. Par Sabeur JEDID.">
+  <meta name="author" content="Sabeur JEDID">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="canonical" href="https://kepsilone.github.io/apprentissage/memento-sql.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sabeur JEDID">
+  <meta property="og:title" content="Mémento SQL">
+  <meta property="og:description" content="Le SQL utile au quotidien en 18 fiches courtes, des bases aux fonctions de fenêtre.">
+  <meta property="og:url" content="https://kepsilone.github.io/apprentissage/memento-sql.html">
+  <meta property="og:image" content="https://kepsilone.github.io/assets/img/photo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=16">
+  <link rel="stylesheet" href="../assets/css/article.css?v=6">
+  <link rel="stylesheet" href="../assets/css/carte.css?v=7">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="site-header">
+      <a href="../index.html" class="brand" aria-label="Sabeur JEDID, accueil">
+        <img src="../assets/img/logo.png?v=2" alt="Kepsilone · Data Engineering" class="brand-logo" width="400" height="117">
+      </a>
+      <nav class="toplinks" aria-label="Liens principaux">
+        <a href="../index.html#articles">Articles</a>
+        <a href="../index.html#apprentissage">Apprentissage</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="pill-link" href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main class="carte memento">
+      <a class="crumb" href="../index.html#apprentissage">← Retour à l'apprentissage</a>
+
+      <div class="carte-head">
+        <span class="carte-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13"/><path d="M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/></svg>
+        </span>
+        <span class="project-label">Apprentissage · SQL · PostgreSQL</span>
+        <h1>Mémento SQL</h1>
+        <p class="carte-goal"><strong>18 fiches courtes</strong>, des bases aux fonctions de fenêtre.</p>
+        <p class="carte-howto">Une fiche à la fois : la question, les commandes essentielles, un exemple et un tips.</p>
+      </div>
+
+      <nav class="lvl-nav" aria-label="Choisir un niveau">
+        <a class="lvl-link s1" href="#bases"><span class="rail-dot">1</span><span>Les bases</span></a><a class="lvl-link s3" href="#intermediaire"><span class="rail-dot">2</span><span>Intermédiaire</span></a><a class="lvl-link s5" href="#avance"><span class="rail-dot">3</span><span>Avancé</span></a>
+      </nav>
+
+      <section class="ordre" aria-labelledby="h-ordre">
+        <h2 id="h-ordre">La règle à retenir en premier</h2>
+        <div class="ordre-row"><span class="ordre-k">Ordre d'écriture</span><code>WITH → SELECT → FROM → JOIN → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT</code></div>
+<div class="ordre-row"><span class="ordre-k">Ordre d'exécution</span><code>FROM → JOIN → WHERE → GROUP BY → HAVING → SELECT → DISTINCT → ORDER BY → LIMIT</code></div>
+        <p>La base lit d'abord la table et filtre, puis choisit les colonnes. C'est pourquoi un alias créé dans <code>SELECT</code> n'existe pas encore dans le <code>WHERE</code>.</p>
+      </section>
+
+      <section class="memo-level" id="bases" aria-labelledby="h-bases">
+        <div class="memo-level-head s1">
+          <h2 id="h-bases">Niveau 1 · Les bases</h2>
+          <p>Lire, filtrer, trier et nettoyer des données.</p>
+        </div>
+        <div class="carte-steps">
+        <section class="step s1" id="fiche-1" aria-labelledby="m1">
+          <div class="step-head">
+            <span class="step-num">1</span>
+            <div>
+              <h3 id="m1">Lire</h3>
+              <div class="level" aria-label="Niveau : bases"><i class="on"></i><i></i><i></i> bases</div>
+            </div>
+          </div>
+          <p class="need">Je veux afficher certaines colonnes d'une table.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>SELECT</code><span class="arrow" aria-hidden="true">→</span><span>choisir les colonnes</span></li>
+              <li><code>FROM</code><span class="arrow" aria-hidden="true">→</span><span>dire quelle table</span></li>
+              <li><code>DISTINCT</code><span class="arrow" aria-hidden="true">→</span><span>enlever les doublons</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT DISTINCT pays
+FROM clients;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> <code>DISTINCT</code> porte sur toutes les colonnes choisies, pas sur une seule.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>SELECT *</code> <code>AS alias</code></div>
+          </details>
+        </section>
+        <section class="step s1" id="fiche-2" aria-labelledby="m2">
+          <div class="step-head">
+            <span class="step-num">2</span>
+            <div>
+              <h3 id="m2">Filtrer</h3>
+              <div class="level" aria-label="Niveau : bases"><i class="on"></i><i></i><i></i> bases</div>
+            </div>
+          </div>
+          <p class="need">Je veux garder seulement certaines lignes.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>WHERE</code><span class="arrow" aria-hidden="true">→</span><span>poser une condition</span></li>
+              <li><code>= &lt;&gt; &gt; &lt; &gt;= &lt;=</code><span class="arrow" aria-hidden="true">→</span><span>comparer</span></li>
+              <li><code>AND / OR / NOT</code><span class="arrow" aria-hidden="true">→</span><span>combiner</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT * FROM clients
+WHERE pays = 'France'
+  AND score &gt;= 430;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> <code>= NULL</code> ne marche jamais. Écrivez <code>IS NULL</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>IN ('France', 'Spain')</code> <code>BETWEEN a AND b</code> <code>LIKE 'A%'</code> <code>ILIKE</code> <code>IS NOT NULL</code> <code>( … ) pour AND / OR</code></div>
+          </details>
+        </section>
+        <section class="step s1" id="fiche-3" aria-labelledby="m3">
+          <div class="step-head">
+            <span class="step-num">3</span>
+            <div>
+              <h3 id="m3">Trier et limiter</h3>
+              <div class="level" aria-label="Niveau : bases"><i class="on"></i><i></i><i></i> bases</div>
+            </div>
+          </div>
+          <p class="need">Je veux classer les lignes et n'en garder que quelques-unes.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>ORDER BY … DESC</code><span class="arrow" aria-hidden="true">→</span><span>trier</span></li>
+              <li><code>LIMIT / OFFSET</code><span class="arrow" aria-hidden="true">→</span><span>garder, sauter des lignes</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT nom, score FROM clients
+ORDER BY score DESC, id
+LIMIT 5;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> ajoutez un second critère (<code>id</code>) : les égalités sortent toujours dans le même ordre.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>ASC</code> <code>NULLS LAST</code></div>
+          </details>
+        </section>
+        <section class="step s1" id="fiche-4" aria-labelledby="m4">
+          <div class="step-head">
+            <span class="step-num">4</span>
+            <div>
+              <h3 id="m4">Conditions</h3>
+              <div class="level" aria-label="Niveau : bases"><i class="on"></i><i></i><i></i> bases</div>
+            </div>
+          </div>
+          <p class="need">Je veux une valeur qui dépend d'une condition.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>CASE WHEN … THEN</code><span class="arrow" aria-hidden="true">→</span><span>si … alors</span></li>
+              <li><code>COALESCE</code><span class="arrow" aria-hidden="true">→</span><span>remplacer un NULL</span></li>
+              <li><code>NULLIF</code><span class="arrow" aria-hidden="true">→</span><span>transformer une valeur en NULL</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT nom,
+  CASE WHEN score &gt;= 450 THEN 'haut'
+       ELSE 'autre' END
+FROM clients;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> <code>montant / NULLIF(quantite, 0)</code> évite la division par zéro.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>CASE dans WHERE</code> <code>CASE dans ORDER BY</code></div>
+          </details>
+        </section>
+        <section class="step s1" id="fiche-5" aria-labelledby="m5">
+          <div class="step-head">
+            <span class="step-num">5</span>
+            <div>
+              <h3 id="m5">Fonctions utiles</h3>
+              <div class="level" aria-label="Niveau : bases"><i class="on"></i><i></i><i></i> bases</div>
+            </div>
+          </div>
+          <p class="need">Je veux nettoyer du texte ou arrondir un nombre.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>UPPER / LOWER / TRIM</code><span class="arrow" aria-hidden="true">→</span><span>texte</span></li>
+              <li><code>ROUND / ABS</code><span class="arrow" aria-hidden="true">→</span><span>nombres</span></li>
+              <li><code>::NUMERIC</code><span class="arrow" aria-hidden="true">→</span><span>convertir</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT UPPER(TRIM(nom)),
+       ROUND(score * 1.1, 1)
+FROM clients;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> entre deux entiers, <code>5 / 2</code> donne <code>2</code>. Écrivez <code>5 / 2.0</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>LENGTH</code> <code>SUBSTRING</code> <code>REPLACE</code> <code>CONCAT</code> <code>||</code> <code>CAST(x AS type)</code></div>
+          </details>
+        </section>
+        <section class="step s1" id="fiche-6" aria-labelledby="m6">
+          <div class="step-head">
+            <span class="step-num">6</span>
+            <div>
+              <h3 id="m6">Modifier</h3>
+              <div class="level" aria-label="Niveau : bases"><i class="on"></i><i></i><i></i> bases</div>
+            </div>
+          </div>
+          <p class="need">Je veux ajouter, changer ou supprimer des lignes.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>INSERT INTO … VALUES</code><span class="arrow" aria-hidden="true">→</span><span>ajouter</span></li>
+              <li><code>UPDATE … SET</code><span class="arrow" aria-hidden="true">→</span><span>modifier</span></li>
+              <li><code>DELETE FROM</code><span class="arrow" aria-hidden="true">→</span><span>supprimer</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>UPDATE clients
+SET score = 450
+WHERE id = 3;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> sans <code>WHERE</code>, toutes les lignes sont touchées. Testez d'abord avec un <code>SELECT</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>INSERT … SELECT</code> <code>RETURNING *</code></div>
+          </details>
+        </section>
+        </div>
+      </section>
+      <section class="memo-level" id="intermediaire" aria-labelledby="h-intermediaire">
+        <div class="memo-level-head s3">
+          <h2 id="h-intermediaire">Niveau 2 · Intermédiaire</h2>
+          <p>Compter, regrouper, croiser les tables et découper les requêtes.</p>
+        </div>
+        <div class="carte-steps">
+        <section class="step s3" id="fiche-7" aria-labelledby="m7">
+          <div class="step-head">
+            <span class="step-num">7</span>
+            <div>
+              <h3 id="m7">Agréger et regrouper</h3>
+              <div class="level" aria-label="Niveau : intermédiaire"><i class="on"></i><i class="on"></i><i></i> intermédiaire</div>
+            </div>
+          </div>
+          <p class="need">Je veux un total ou une moyenne par catégorie.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>COUNT / SUM / AVG</code><span class="arrow" aria-hidden="true">→</span><span>compter, additionner, moyenne</span></li>
+              <li><code>GROUP BY</code><span class="arrow" aria-hidden="true">→</span><span>un résultat par groupe</span></li>
+              <li><code>HAVING</code><span class="arrow" aria-hidden="true">→</span><span>filtrer les groupes</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT pays, AVG(score)
+FROM clients
+WHERE score &lt;&gt; 0
+GROUP BY pays
+HAVING AVG(score) &gt; 430;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> <code>WHERE</code> filtre les lignes avant le calcul, <code>HAVING</code> filtre les groupes après.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>MIN / MAX</code> <code>COUNT(DISTINCT x)</code> <code>STRING_AGG(x, ', ')</code></div>
+          </details>
+        </section>
+        <section class="step s3" id="fiche-8" aria-labelledby="m8">
+          <div class="step-head">
+            <span class="step-num">8</span>
+            <div>
+              <h3 id="m8">Joindre</h3>
+              <div class="level" aria-label="Niveau : intermédiaire"><i class="on"></i><i class="on"></i><i></i> intermédiaire</div>
+            </div>
+          </div>
+          <p class="need">Je veux combiner deux tables.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>JOIN … ON</code><span class="arrow" aria-hidden="true">→</span><span>garder ce qui correspond</span></li>
+              <li><code>LEFT JOIN</code><span class="arrow" aria-hidden="true">→</span><span>tout garder à gauche</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT c.nom, co.montant
+FROM clients c
+LEFT JOIN commandes co
+  ON co.client_id = c.id;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> un filtre sur la table de droite se met dans <code>ON</code> pour garder les clients sans commande.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>RIGHT JOIN</code> <code>FULL OUTER JOIN</code> <code>CROSS JOIN</code> <code>SELF JOIN</code></div>
+          </details>
+        </section>
+        <section class="step s3" id="fiche-9" aria-labelledby="m9">
+          <div class="step-head">
+            <span class="step-num">9</span>
+            <div>
+              <h3 id="m9">Dates</h3>
+              <div class="level" aria-label="Niveau : intermédiaire"><i class="on"></i><i class="on"></i><i></i> intermédiaire</div>
+            </div>
+          </div>
+          <p class="need">Je veux regrouper ou calculer avec des dates.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>DATE_TRUNC('month', d)</code><span class="arrow" aria-hidden="true">→</span><span>ramener au mois</span></li>
+              <li><code>EXTRACT(YEAR FROM d)</code><span class="arrow" aria-hidden="true">→</span><span>garder une partie</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT DATE_TRUNC('month', date_cmd),
+       SUM(montant)
+FROM commandes
+GROUP BY DATE_TRUNC('month', date_cmd);</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> triez sur la date, pas sur un nom de mois : « avril » passerait avant « janvier ».</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>CURRENT_DATE</code> <code>NOW()</code> <code>+ INTERVAL '7 days'</code></div>
+          </details>
+        </section>
+        <section class="step s3" id="fiche-10" aria-labelledby="m10">
+          <div class="step-head">
+            <span class="step-num">10</span>
+            <div>
+              <h3 id="m10">Sous-requêtes</h3>
+              <div class="level" aria-label="Niveau : intermédiaire"><i class="on"></i><i class="on"></i><i></i> intermédiaire</div>
+            </div>
+          </div>
+          <p class="need">Je veux utiliser le résultat d'une requête dans une autre.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>(SELECT …)</code><span class="arrow" aria-hidden="true">→</span><span>requête dans la requête</span></li>
+              <li><code>EXISTS / NOT EXISTS</code><span class="arrow" aria-hidden="true">→</span><span>y a-t-il une correspondance ?</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT nom FROM clients
+WHERE score &gt;
+  (SELECT AVG(score) FROM clients);</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> avec un <code>NULL</code> dans la liste, <code>NOT IN</code> ne renvoie rien. Utilisez <code>NOT EXISTS</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>FROM (SELECT …) AS t</code> <code>ANY</code> <code>ALL</code></div>
+          </details>
+        </section>
+        <section class="step s3" id="fiche-11" aria-labelledby="m11">
+          <div class="step-head">
+            <span class="step-num">11</span>
+            <div>
+              <h3 id="m11">CTE : WITH</h3>
+              <div class="level" aria-label="Niveau : intermédiaire"><i class="on"></i><i class="on"></i><i></i> intermédiaire</div>
+            </div>
+          </div>
+          <p class="need">Je veux découper une longue requête en étapes lisibles.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>WITH nom AS (…)</code><span class="arrow" aria-hidden="true">→</span><span>nommer une étape</span></li>
+              <li><code>, nom2 AS (…)</code><span class="arrow" aria-hidden="true">→</span><span>enchaîner plusieurs étapes</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>WITH top AS (
+  SELECT * FROM clients
+  WHERE score &gt; 400
+)
+SELECT * FROM top;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> <code>WITH</code> se place avant le <code>SELECT</code> principal.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>WITH RECURSIVE</code></div>
+          </details>
+        </section>
+        <section class="step s3" id="fiche-12" aria-labelledby="m12">
+          <div class="step-head">
+            <span class="step-num">12</span>
+            <div>
+              <h3 id="m12">Empiler des résultats</h3>
+              <div class="level" aria-label="Niveau : intermédiaire"><i class="on"></i><i class="on"></i><i></i> intermédiaire</div>
+            </div>
+          </div>
+          <p class="need">Je veux mettre deux résultats l'un sous l'autre.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>UNION ALL</code><span class="arrow" aria-hidden="true">→</span><span>empiler, doublons gardés</span></li>
+              <li><code>UNION</code><span class="arrow" aria-hidden="true">→</span><span>empiler, sans doublons</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT id FROM clients
+UNION
+SELECT client_id FROM commandes;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> les deux requêtes doivent avoir le même nombre de colonnes, de types compatibles.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>INTERSECT</code> <code>EXCEPT</code></div>
+          </details>
+        </section>
+        </div>
+      </section>
+      <section class="memo-level" id="avance" aria-labelledby="h-avance">
+        <div class="memo-level-head s5">
+          <h2 id="h-avance">Niveau 3 · Avancé</h2>
+          <p>Classer sans perdre de lignes, structurer les tables et sécuriser les écritures.</p>
+        </div>
+        <div class="carte-steps">
+        <section class="step s5" id="fiche-13" aria-labelledby="m13">
+          <div class="step-head">
+            <span class="step-num">13</span>
+            <div>
+              <h3 id="m13">Fonctions de fenêtre</h3>
+              <div class="level" aria-label="Niveau : avancé"><i class="on"></i><i class="on"></i><i class="on"></i> avancé</div>
+            </div>
+          </div>
+          <p class="need">Je veux un rang ou un cumul sans regrouper les lignes.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>ROW_NUMBER() OVER</code><span class="arrow" aria-hidden="true">→</span><span>numéroter</span></li>
+              <li><code>PARTITION BY</code><span class="arrow" aria-hidden="true">→</span><span>recommencer par groupe</span></li>
+              <li><code>LAG / SUM() OVER</code><span class="arrow" aria-hidden="true">→</span><span>ligne d'avant, cumul</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>SELECT nom, pays,
+  RANK() OVER (
+    PARTITION BY pays
+    ORDER BY score DESC)
+FROM clients;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> pour garder seulement le n° 1, passez par une CTE (<code>WITH</code>).</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>DENSE_RANK</code> <code>LEAD</code> <code>ROWS BETWEEN …</code></div>
+          </details>
+        </section>
+        <section class="step s5" id="fiche-14" aria-labelledby="m14">
+          <div class="step-head">
+            <span class="step-num">14</span>
+            <div>
+              <h3 id="m14">Créer une table</h3>
+              <div class="level" aria-label="Niveau : avancé"><i class="on"></i><i class="on"></i><i class="on"></i> avancé</div>
+            </div>
+          </div>
+          <p class="need">Je veux créer une table propre et protégée.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>CREATE TABLE</code><span class="arrow" aria-hidden="true">→</span><span>créer</span></li>
+              <li><code>PRIMARY KEY</code><span class="arrow" aria-hidden="true">→</span><span>identifiant unique</span></li>
+              <li><code>REFERENCES</code><span class="arrow" aria-hidden="true">→</span><span>lien vers une autre table</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>CREATE TABLE ventes (
+  id INTEGER PRIMARY KEY,
+  client_id INTEGER
+    REFERENCES clients(id),
+  montant NUMERIC(12,2)
+    CHECK (montant &gt;= 0)
+);</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> <code>DROP</code> supprime la table, <code>TRUNCATE</code> la vide. Les deux sont sans retour.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>ALTER TABLE</code> <code>NOT NULL</code> <code>UNIQUE</code> <code>DEFAULT</code> <code>CHECK</code></div>
+          </details>
+        </section>
+        <section class="step s5" id="fiche-15" aria-labelledby="m15">
+          <div class="step-head">
+            <span class="step-num">15</span>
+            <div>
+              <h3 id="m15">Insérer ou mettre à jour</h3>
+              <div class="level" aria-label="Niveau : avancé"><i class="on"></i><i class="on"></i><i class="on"></i> avancé</div>
+            </div>
+          </div>
+          <p class="need">Je veux ajouter une ligne, ou la mettre à jour si elle existe.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>ON CONFLICT … DO UPDATE</code><span class="arrow" aria-hidden="true">→</span><span>UPSERT</span></li>
+              <li><code>RETURNING</code><span class="arrow" aria-hidden="true">→</span><span>voir les lignes touchées</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>INSERT INTO clients (id, nom, score)
+VALUES (1, 'alpha', 520)
+ON CONFLICT (id)
+DO UPDATE SET score = EXCLUDED.score;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> il faut une clé primaire ou une contrainte <code>UNIQUE</code> sur la colonne visée.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>EXCLUDED</code> <code>DO NOTHING</code></div>
+          </details>
+        </section>
+        <section class="step s5" id="fiche-16" aria-labelledby="m16">
+          <div class="step-head">
+            <span class="step-num">16</span>
+            <div>
+              <h3 id="m16">Transactions</h3>
+              <div class="level" aria-label="Niveau : avancé"><i class="on"></i><i class="on"></i><i class="on"></i> avancé</div>
+            </div>
+          </div>
+          <p class="need">Je veux pouvoir tout annuler si ça se passe mal.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>BEGIN … COMMIT</code><span class="arrow" aria-hidden="true">→</span><span>valider en bloc</span></li>
+              <li><code>ROLLBACK</code><span class="arrow" aria-hidden="true">→</span><span>tout annuler</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>BEGIN;
+UPDATE comptes SET solde = solde - 100
+WHERE id = 1;
+ROLLBACK;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> tant que <code>COMMIT</code> n'est pas lancé, rien n'est enregistré.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>SAVEPOINT</code> <code>ROLLBACK TO SAVEPOINT</code></div>
+          </details>
+        </section>
+        <section class="step s5" id="fiche-17" aria-labelledby="m17">
+          <div class="step-head">
+            <span class="step-num">17</span>
+            <div>
+              <h3 id="m17">Index et performance</h3>
+              <div class="level" aria-label="Niveau : avancé"><i class="on"></i><i class="on"></i><i class="on"></i> avancé</div>
+            </div>
+          </div>
+          <p class="need">Je veux qu'une requête aille plus vite.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>CREATE INDEX</code><span class="arrow" aria-hidden="true">→</span><span>accélérer une recherche</span></li>
+              <li><code>EXPLAIN ANALYZE</code><span class="arrow" aria-hidden="true">→</span><span>voir comment elle s'exécute</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>CREATE INDEX idx_cmd_client
+ON commandes (client_id);</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> <code>EXPLAIN ANALYZE</code> exécute vraiment la requête, même un <code>DELETE</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>EXPLAIN</code></div>
+          </details>
+        </section>
+        <section class="step s5" id="fiche-18" aria-labelledby="m18">
+          <div class="step-head">
+            <span class="step-num">18</span>
+            <div>
+              <h3 id="m18">Droits d'accès</h3>
+              <div class="level" aria-label="Niveau : avancé"><i class="on"></i><i class="on"></i><i class="on"></i> avancé</div>
+            </div>
+          </div>
+          <p class="need">Je veux contrôler qui peut lire une table.</p>
+          <div>
+            <span class="tag-k">J'écris</span>
+            <ul class="ess">
+              <li><code>GRANT SELECT</code><span class="arrow" aria-hidden="true">→</span><span>donner le droit de lire</span></li>
+              <li><code>REVOKE</code><span class="arrow" aria-hidden="true">→</span><span>retirer un droit</span></li>
+            </ul>
+          </div>
+          <div class="ex">
+            <span class="tag-k">Exemple</span>
+            <pre><code>GRANT SELECT ON clients
+TO analyste;</code></pre>
+          </div>
+          <p class="trap"><strong>Tips :</strong> un droit peut aussi venir d'un autre rôle ou de <code>PUBLIC</code>.</p>
+          <details class="more">
+            <summary>Aller plus loin</summary>
+            <div class="chips"><code>GRANT USAGE ON SCHEMA</code></div>
+          </details>
+        </section>
+        </div>
+      </section>
+
+      <section class="memo-extra" aria-labelledby="h-mots">
+        <h2 id="h-mots">Quel mot-clé utiliser ?</h2>
+        <ul class="lookup">
+<li><span>Choisir les colonnes</span><code>SELECT</code></li>
+<li><span>Supprimer les doublons</span><code>DISTINCT</code></li>
+<li><span>Filtrer les lignes</span><code>WHERE</code></li>
+<li><span>Relier des tables</span><code>JOIN … ON</code></li>
+<li><span>Garder les lignes de gauche</span><code>LEFT JOIN</code></li>
+<li><span>Moyenne, somme, nombre</span><code>AVG / SUM / COUNT</code></li>
+<li><span>Regrouper</span><code>GROUP BY</code></li>
+<li><span>Filtrer les groupes</span><code>HAVING</code></li>
+<li><span>Trier</span><code>ORDER BY</code></li>
+<li><span>Limiter</span><code>LIMIT</code></li>
+<li><span>Condition dans une valeur</span><code>CASE</code></li>
+<li><span>Remplacer un NULL</span><code>COALESCE</code></li>
+<li><span>Vérifier une correspondance</span><code>EXISTS</code></li>
+<li><span>Découper en étapes</span><code>WITH</code></li>
+<li><span>Empiler deux résultats</span><code>UNION ALL</code></li>
+<li><span>Classer sans fusionner</span><code>RANK() OVER</code></li>
+<li><span>Valeur précédente</span><code>LAG()</code></li>
+<li><span>Cumul</span><code>SUM() OVER</code></li>
+<li><span>Ajouter, modifier, supprimer</span><code>INSERT / UPDATE / DELETE</code></li>
+<li><span>Créer, modifier une table</span><code>CREATE / ALTER TABLE</code></li>
+<li><span>Valider, annuler</span><code>COMMIT / ROLLBACK</code></li>
+<li><span>Voir le plan d'exécution</span><code>EXPLAIN ANALYZE</code></li>
+        </ul>
+      </section>
+
+      <section class="memo-extra" aria-labelledby="h-quiz">
+        <h2 id="h-quiz">Testez-vous</h2>
+        <p class="carte-howto">Cherchez la réponse, puis cliquez sur la question pour vérifier.</p>
+        <div class="quiz">
+<details class="quiz-q"><summary><span class="quiz-n">1</span>Exclure les scores à 0 avant de calculer une moyenne ?</summary><p>Réponse : <code>WHERE</code></p></details>
+<details class="quiz-q"><summary><span class="quiz-n">2</span>Garder seulement les pays dont la moyenne dépasse 430 ?</summary><p>Réponse : <code>HAVING</code></p></details>
+<details class="quiz-q"><summary><span class="quiz-n">3</span>Afficher chaque pays une seule fois ?</summary><p>Réponse : <code>DISTINCT</code></p></details>
+<details class="quiz-q"><summary><span class="quiz-n">4</span>Garder tous les clients, même sans commande ?</summary><p>Réponse : <code>LEFT JOIN</code></p></details>
+<details class="quiz-q"><summary><span class="quiz-n">5</span>Classer les clients sans fusionner les lignes ?</summary><p>Réponse : <code>RANK() OVER</code></p></details>
+<details class="quiz-q"><summary><span class="quiz-n">6</span>Nommer plusieurs résultats intermédiaires ?</summary><p>Réponse : <code>WITH</code></p></details>
+        </div>
+      </section>
+
+      <section class="memo-extra" aria-labelledby="h-complet">
+        <h2 id="h-complet">Tout ensemble</h2>
+        <details class="more more-big">
+          <summary>Voir un exemple complet qui combine CTE, jointure, agrégats et classement</summary>
+          <div class="ex"><pre><code>WITH scores AS (
+  SELECT pays, AVG(score) AS moyenne, COUNT(*) AS nb
+  FROM clients
+  WHERE score &lt;&gt; 0
+  GROUP BY pays
+),
+ventes AS (
+  SELECT c.pays, SUM(co.montant) AS total
+  FROM clients c
+  JOIN commandes co ON co.client_id = c.id
+  GROUP BY c.pays
+)
+SELECT s.pays,
+       s.nb,
+       ROUND(s.moyenne, 2) AS moyenne,
+       COALESCE(v.total, 0) AS total,
+       RANK() OVER (ORDER BY COALESCE(v.total, 0) DESC) AS rang
+FROM scores s
+LEFT JOIN ventes v ON v.pays = s.pays
+ORDER BY total DESC
+LIMIT 10;</code></pre></div>
+          <p class="carte-howto">Les scores et les ventes sont calculés séparément avant la jointure : sinon, un client avec plusieurs commandes compterait plusieurs fois dans la moyenne.</p>
+        </details>
+      </section>
+
+      <p class="carte-note">Ce mémento couvre le SQL utile au quotidien. Il ne liste pas toute la norme (JSON, tableaux, déclencheurs, procédures, partitionnement…).</p>
+
+      <div class="carte-actions">
+        <a class="btn btn-primary" href="carte-sql-01.html">Commencer par la carte 01</a>
+        <a class="btn btn-ghost" href="../index.html#apprentissage">Tout l'apprentissage</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-left">
+        <p class="footer-name">Sabeur JEDID</p>
+        <p class="footer-copy">© 2026 · Kepsilone · Data Engineering</p>
+      </div>
+      <nav class="footer-right" aria-label="Contact">
+        <a href="https://github.com/Kepsilone" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/jedid-sabeur" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </footer>
+
+  </div>
+</body>
+</html>

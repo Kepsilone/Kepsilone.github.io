@@ -190,6 +190,69 @@
   border-top: 1px dashed var(--line);
 }
 
+/* ---------- Ressources (mémento SQL) ---------- */
+.gift-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 24px;
+  margin: 0 0 32px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 18px;
+  background: var(--accent-soft);
+}
+.article .gift-kicker { margin: 0 0 4px; font: 700 13px var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.article .gift-title { margin: 0 0 4px; font: 600 22px/1.3 var(--serif); color: var(--ink); }
+.article .gift-text { margin: 0; font-size: 15px; color: var(--ink-3); }
+.gift-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+.toc { margin: 0 0 8px; padding: 18px 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+.article .toc-title { margin: 0 0 10px; font: 700 13px var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.toc ol { columns: 2; column-gap: 28px; font-size: 15px; }
+.toc li { margin-bottom: 4px; break-inside: avoid; }
+.toc a:hover { color: var(--accent); }
+
+.table-wrap { margin: 0 0 14px; overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+.article table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.article th, .article td { padding: 8px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; color: var(--ink-2); }
+.article th { background: var(--bg-alt); color: var(--ink); font-weight: 700; }
+.article tr:last-child td { border-bottom: 0; }
+
+.article .key { padding: 12px 16px; border-radius: 12px; background: var(--bg-alt); }
+.article .warn { padding: 10px 14px; border-left: 3px solid var(--warm); border-radius: 0 10px 10px 0; background: color-mix(in srgb, var(--warm) 10%, var(--card)); }
+.answers { margin-top: 14px; }
+.answers summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+.answers p { margin-top: 10px; }
+.print-only { display: none; }
+
+@media (max-width: 720px) {
+  .toc ol { columns: 1; }
+  .gift-box { padding: 18px; }
+}
+
+@media print {
+  @page { size: A4; margin: 14mm 14mm 16mm; }
+  body { background: #fff; font-size: 11pt; }
+  .site-header, .site-footer, .crumb, .gift-box, .toc, .article-actions, .answers { display: none !important; }
+  .print-only { display: block; margin-top: 14px; }
+  .article { max-width: none; padding: 0; }
+  .article h1 { font-size: 26pt; }
+  .article .lead { font-size: 12pt; }
+  .article section { padding: 14px 0; }
+  .article h2 { font-size: 16pt; break-after: avoid; }
+  .article pre {
+    background: #FBF6EF; color: #2B2118; border-color: #EADBC6;
+    font-size: 9pt; white-space: pre-wrap; break-inside: avoid;
+  }
+  .table-wrap, .article .key, .article .warn { break-inside: avoid; }
+  .article table { font-size: 9.5pt; }
+  .article th, .article td { padding: 4px 8px; }
+  .print-credit { margin-top: 18px; padding-top: 10px; border-top: 1px solid #EADBC6; font-size: 9pt; color: #6B5A4B; }
+}
+
 @media (max-width: 720px) {
   .article { padding: 28px 0 56px; }
   .article .lead { font-size: 17px; }

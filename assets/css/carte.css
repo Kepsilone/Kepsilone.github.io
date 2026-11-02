@@ -1,0 +1,226 @@
+/* ==========================================================================
+   Cartes SQL (apprentissage/carte-sql-0X.html)
+   Un parcours en 6 étapes, du plus facile au plus difficile.
+   Principe 80/20 : une question, l'essentiel, un exemple, un piège.
+   Le reste est replié dans « Aller plus loin ».
+   Se charge après style.css et article.css et réutilise leurs variables.
+   ========================================================================== */
+
+.carte {
+  --s1: #2F7D46;  /* vert : le plus facile */
+  --s2: #1F7F86;  /* turquoise */
+  --s3: #2C5AA0;  /* bleu */
+  --s4: #C2601B;  /* orange */
+  --s5: #6D3FA0;  /* violet */
+  --s6: #B5471F;  /* rouge : le plus difficile */
+  --mono: ui-monospace, Consolas, Menlo, monospace;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 0 72px;
+}
+
+/* ---------- En-tête ---------- */
+.carte-head { max-width: 780px; margin: 0 auto 32px; text-align: center; display: grid; justify-items: center; gap: 12px; }
+.carte-icon { width: 56px; height: 56px; display: grid; place-items: center; border-radius: 16px; background: var(--ink); color: #FBF6EF; }
+.carte-icon svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.carte-head h1 { margin: 0; font: 600 clamp(32px, 5vw, 46px)/1.12 var(--serif); text-wrap: balance; }
+.carte-goal {
+  margin: 0; padding: 8px 18px;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--card);
+  font-size: 16px; color: var(--ink-2);
+}
+.carte-goal strong { color: var(--ink); }
+.carte-howto { margin: 0; font-size: 15px; color: var(--ink-3); }
+
+/* ---------- Barre de progression ---------- */
+.rail { margin: 0 0 32px; }
+.rail-ends { display: flex; justify-content: space-between; margin-bottom: 10px; font: 700 13px var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+.rail-ends span:first-child { color: var(--s1); }
+.rail-ends span:last-child { color: var(--s6); }
+.rail ol {
+  position: relative; list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.rail ol::before {
+  content: ""; position: absolute; left: calc(100% / 12); right: calc(100% / 12); top: 19px; height: 6px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--s1), var(--s2), var(--s3), var(--s4), var(--s5), var(--s6));
+  opacity: .85;
+}
+.rail li { position: relative; display: grid; justify-items: center; text-align: center; }
+.rail a { display: grid; justify-items: center; gap: 8px; color: var(--ink-2); }
+.rail a:hover .rail-dot { transform: scale(1.08); }
+.rail-dot {
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--c); color: #fff; font: 700 18px var(--sans);
+  box-shadow: 0 0 0 5px var(--bg); transition: transform .15s;
+}
+.rail-label { font: 600 14px/1.3 var(--sans); max-width: 14ch; }
+
+/* ---------- Grille : 6 cartes de même taille ---------- */
+.carte-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+.step {
+  --c: var(--s1);
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 22px 22px 18px;
+  border: 2px solid color-mix(in srgb, var(--c) 40%, transparent);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--c) 5%, var(--card));
+  scroll-margin-top: 110px;
+  min-width: 0;
+}
+.s1 { --c: var(--s1); } .s2 { --c: var(--s2); } .s3 { --c: var(--s3); }
+.s4 { --c: var(--s4); } .s5 { --c: var(--s5); } .s6 { --c: var(--s6); }
+
+.step-head { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center; gap: 12px; }
+.step-num {
+  width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+  background: var(--c); color: #fff; font: 700 20px var(--sans);
+}
+.step-head h2 { margin: 0; font: 700 20px/1.2 var(--sans); color: var(--ink); }
+.level { display: flex; align-items: center; gap: 6px; margin-top: 4px; font-size: 13px; color: var(--ink-3); }
+.level i { width: 16px; height: 6px; border-radius: 3px; background: color-mix(in srgb, var(--c) 18%, var(--card)); }
+.level i.on { background: var(--c); }
+
+/* Petites étiquettes de rubrique */
+.tag-k { display: block; margin-bottom: 6px; font: 700 11px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--c); }
+
+/* 1. La question */
+.need { margin: 0; font-size: 18px; line-height: 1.4; font-weight: 500; color: var(--ink); }
+
+/* 2. L'essentiel : commande → sens */
+.ess { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ess li {
+  display: grid; grid-template-columns: minmax(0, auto) 18px minmax(0, 1fr); align-items: center; gap: 8px;
+}
+.ess code {
+  justify-self: start; padding: 5px 10px; border-radius: 8px;
+  background: var(--card); border: 1.5px solid color-mix(in srgb, var(--c) 55%, transparent);
+  font: 700 14px/1.35 var(--mono); color: var(--ink); overflow-wrap: anywhere;
+}
+.ess .arrow { color: var(--c); font-weight: 700; text-align: center; }
+.ess span:last-child { font-size: 15px; line-height: 1.35; color: var(--ink-2); }
+
+/* 3. L'exemple */
+.ex pre {
+  margin: 0; padding: 10px 12px; border-radius: 10px;
+  background: #2B2118; color: #F4E9DA;
+  font: 13px/1.55 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere;
+}
+
+/* 4. Le piège, toujours aligné en bas */
+.trap {
+  margin: auto 0 0; padding: 10px 12px 10px 38px; position: relative;
+  border-radius: 10px; background: color-mix(in srgb, var(--c) 11%, var(--card));
+  font-size: 15px; line-height: 1.45; color: var(--ink);
+}
+.trap::before { content: "💡"; position: absolute; left: 11px; top: 9px; font-size: 16px; }
+.trap code { font: 700 13.5px var(--mono); }
+
+/* 5. Aller plus loin (replié) */
+.more { border-top: 1px dashed color-mix(in srgb, var(--c) 35%, transparent); padding-top: 10px; }
+.more summary {
+  cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px;
+  font: 600 14px var(--sans); color: var(--c);
+}
+.more summary::-webkit-details-marker { display: none; }
+.more summary::before { content: "+"; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--c); font-size: 14px; line-height: 1; }
+.more[open] summary::before { content: "−"; }
+.more summary:focus-visible { outline: 3px solid var(--c); outline-offset: 3px; border-radius: 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chips code {
+  padding: 3px 8px; border-radius: 6px; background: var(--card);
+  border: 1px solid var(--line); font: 600 13px var(--mono); color: var(--ink-2);
+}
+
+/* ---------- Mémento : niveaux, ordre des clauses, mots-clés, quiz ---------- */
+.step-head h3 { margin: 0; font: 700 20px/1.2 var(--sans); color: var(--ink); }
+
+.lvl-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 28px; }
+.lvl-link {
+  display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+  border: 2px solid color-mix(in srgb, var(--c) 40%, transparent); border-radius: 16px;
+  background: color-mix(in srgb, var(--c) 6%, var(--card));
+  font: 700 16px var(--sans); color: var(--ink);
+}
+.lvl-link:hover { border-color: var(--c); }
+.lvl-link .rail-dot { width: 36px; height: 36px; font-size: 16px; box-shadow: none; }
+
+.ordre {
+  margin: 0 0 40px; padding: 20px 22px; border-radius: 20px;
+  background: var(--ink); color: #FBF6EF; display: grid; gap: 10px;
+}
+.ordre h2 { margin: 0 0 4px; font: 700 13px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: #E8C9A0; }
+.ordre-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); align-items: baseline; gap: 12px; }
+.ordre-k { font: 700 15px var(--sans); }
+.ordre code { font: 600 15px/1.5 var(--mono); color: #FFE9C7; overflow-wrap: anywhere; }
+.ordre p { margin: 4px 0 0; font-size: 15px; color: #D9CBB8; max-width: none; }
+.ordre p code { font-size: 14px; padding: 0 5px; border-radius: 4px; background: rgba(255, 255, 255, .1); }
+
+.memo-level { margin: 0 0 44px; scroll-margin-top: 110px; }
+.memo-level-head { --c: var(--s1); display: grid; gap: 4px; margin: 0 0 18px; padding-left: 14px; border-left: 5px solid var(--c); }
+.memo-level-head h2 { margin: 0; font: 600 clamp(24px, 3vw, 30px)/1.2 var(--serif); color: var(--ink); }
+.memo-level-head p { margin: 0; font-size: 16px; color: var(--ink-3); }
+
+.memo-extra { margin: 0 0 40px; }
+.memo-extra h2 { margin: 0 0 14px; font: 600 clamp(24px, 3vw, 30px)/1.2 var(--serif); }
+.lookup {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 24px;
+}
+.lookup li {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 9px 14px; border-radius: 10px; background: var(--card); border: 1px solid var(--line);
+  font-size: 15px; color: var(--ink-2);
+}
+.lookup code { font: 700 14px var(--mono); color: var(--ink); text-align: right; }
+
+.quiz { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; margin-top: 12px; }
+.quiz-q { border: 1px solid var(--line); border-radius: 12px; background: var(--card); padding: 12px 14px; }
+.quiz-q summary { cursor: pointer; list-style: none; display: flex; gap: 10px; align-items: baseline; font-size: 16px; color: var(--ink); }
+.quiz-q summary::-webkit-details-marker { display: none; }
+.quiz-n { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font: 700 13px var(--sans); }
+.quiz-q p { margin: 10px 0 0 34px; font-size: 15px; color: var(--ink-2); }
+.quiz-q code { font: 700 14px var(--mono); color: var(--accent); }
+.more-big { --c: var(--accent); border: 1px solid var(--line); border-radius: 14px; background: var(--card); padding: 14px 16px; }
+.more-big .ex { margin-top: 12px; }
+.more-big p { margin: 10px 0 0; }
+
+@media (max-width: 760px) {
+  .lvl-nav, .lookup, .quiz { grid-template-columns: minmax(0, 1fr); }
+  .ordre-row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}
+
+.carte-note {
+  max-width: 780px; margin: 36px auto 0; padding: 14px 18px;
+  border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0;
+  background: var(--accent-soft); color: var(--ink-2); font-size: 15px; line-height: 1.8;
+}
+.carte-note code { padding: 1px 6px; border-radius: 6px; background: var(--bg-alt); font-size: .92em; }
+.carte-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+
+/* ---------- Écrans moyens et étroits ---------- */
+@media (max-width: 1000px) {
+  .carte-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  .carte-steps { grid-template-columns: minmax(0, 1fr); }
+  .rail-label { display: none; }
+  .rail-dot { width: 36px; height: 36px; font-size: 16px; }
+  .rail ol::before { top: 15px; }
+}
+@media (max-width: 420px) {
+  .ess li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .ess .arrow { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) { .rail-dot { transition: none; } }
+
+@media print {
+  .site-header, .site-footer, .crumb, .carte-actions { display: none !important; }
+  .step { break-inside: avoid; }
+}
